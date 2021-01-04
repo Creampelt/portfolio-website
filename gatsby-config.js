@@ -1,9 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: "Portfolio Website",
+    title: "Portfolio Website"
   },
   plugins: [
-    "gatsby-plugin-sass",
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-transition-link",
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        implementation: require("sass")
+      },
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -20,5 +27,21 @@ module.exports = {
       },
       __key: "images",
     },
+    {
+      resolve: "gatsby-plugin-google-fonts-v2",
+      options: {
+        fonts: [
+          {
+            family: "Sacramento",
+            weights: ["400"]
+          },
+          {
+            family: "Raleway",
+            variable: true,
+            weights: ["200..900"]
+          }
+        ]
+      }
+    }
   ],
 };

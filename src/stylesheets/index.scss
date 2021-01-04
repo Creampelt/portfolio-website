@@ -1,0 +1,170 @@
+$transition: all 0.2s ease;
+$lazy-transition: all 0.5s ease;
+$min-title: 120px;
+$project-button-size: 125px;
+$projects-per-row: 4;
+$card-max-width: 1250px;
+
+body {
+  margin: 0;
+}
+
+title {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Sacramento", cursive;
+  font-size: 10vw;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  h1 {
+    text-align: center;
+    @media only screen and (max-width: $min-title * 10) {
+      font-size: $min-title;
+    }
+  }
+  .subtitle {
+    font-weight: 500;
+    font-size: 1.25em;
+    span {
+      padding: 0 20px;
+    }
+  }
+}
+
+.projects {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px calc(50vw - (#{$projects-per-row} * (#{$project-button-size} + 45px)) / 2);
+  flex-wrap: wrap;
+}
+
+.project-link {
+  transition: $transition;
+  text-decoration: none;
+  width: $project-button-size;
+  height: $project-button-size;
+  background-color: lightblue;
+  border-radius: 100%;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  margin: 20px;
+  box-shadow: 0 0 5px #0008;
+  div {
+    transition: $transition;
+    opacity: 0;
+    padding: 20px;
+    border-radius: 100%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0008;
+    p {
+      font-family: "Sacramento", cursive;
+      color: #fff;
+      margin: 0;
+    }
+  }
+  &:hover {
+    box-shadow: 0 0 10px #000f;
+    transform: scale(1.04);
+    div {
+      opacity: 1;
+    }
+  }
+}
+
+.project-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 1;
+  padding: 10px;
+}
+
+.project-card {
+  transition: $lazy-transition;
+  margin: 10px;
+  display: flex;
+  background-color: #fff;
+  flex: 1;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #0005;
+  @media (min-width: $card-max-width + 40px) {
+    align-self: center;
+    width: $card-max-width;
+  }
+  padding: 60px 30px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 20px #0009;
+    .column {
+      img {
+        transform: translateY(-20px);
+      }
+    }
+  }
+  .column {
+    transition: $lazy-transition;
+    flex: 1;
+    margin: 0 30px;
+    &.hide {
+      transform: translateY(50px);
+      opacity: 0
+    }
+    .type {
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .title {
+      font-size: 60px;
+      margin: 0;
+    }
+    .short-description {
+      font-size: 20px;
+    }
+    img {
+      transition: $lazy-transition;
+      width: 100%;
+    }
+    &.image-col {
+      flex: 2;
+    }
+  }
+}
+
+.ani-link {
+  text-decoration: none;
+  color: unset;
+}
