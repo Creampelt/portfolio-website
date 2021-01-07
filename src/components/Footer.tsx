@@ -18,7 +18,10 @@ function getProjIndex(key): number {
   return -1;
 }
 
-function getNextAndPrev(path): Neighbors {
+function getNextAndPrev(path?: string): Neighbors {
+  if (!path) {
+    return {};
+  }
   let index = getProjIndex(path.substr(1, path.length - 2));
   if (index === -1) {
     return {};
@@ -29,7 +32,7 @@ function getNextAndPrev(path): Neighbors {
   };
 }
 
-const Footer = ({ path }: { path: string }) => {
+const Footer = ({ path }: { path?: string }) => {
   const [{ prev, next }, setNeighbors]: [state: Neighbors, setState: (newState: Neighbors) => void] = React.useState({});
   React.useEffect(() => {
     setTimeout(() => setNeighbors(getNextAndPrev(path)), 250);

@@ -1,0 +1,53 @@
+@use "index";
+
+.tl-edges {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#not-found {
+  padding: 200px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-family: index.$display-font;
+    font-size: 9vw;
+    margin: 0;
+    text-align: center;
+    @media (max-width: index.$min-title * 10) {
+      font-size: index.$min-title;
+    }
+    @media (min-width: 2250px) {
+      font-size: 2250px * 0.09;
+    }
+  }
+  .home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: rtl;
+    .arrow {
+      transition: index.$lazy-transition;
+      font-size: 75px;
+      margin: 0 20px;
+      color: index.$accent-color;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+    a {
+      text-decoration: none;
+      font-family: index.$display-font;
+      color: inherit;
+    }
+    p:hover ~ .arrow {
+      transform: translateX(-20px);
+    }
+  }
+}

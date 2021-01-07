@@ -70,7 +70,7 @@ footer {
       }
     }
     a {
-      font-family: "JetBrains Mono", monospace;
+      font-family: index.$display-font;
       font-size: 16px;
       &:hover {
         text-decoration: underline;

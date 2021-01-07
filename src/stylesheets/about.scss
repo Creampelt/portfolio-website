@@ -10,7 +10,7 @@ $section-max-width: 1000px;
   height: 85vh;
   .title {
     h1 {
-      font-family: "JetBrains Mono", monospace;
+      font-family: index.$display-font;
       font-size: 9vw;
       margin: 0;
       text-align: center;
@@ -23,7 +23,7 @@ $section-max-width: 1000px;
     }
     span {
       transition: opacity 0.5s ease;
-      font-family: "JetBrains Mono", monospace;
+      font-family: index.$display-font;
       &:nth-of-type(2) {
         transition-delay: 0.3s;
       }

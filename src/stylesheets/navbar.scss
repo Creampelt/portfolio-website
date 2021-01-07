@@ -17,7 +17,7 @@ nav {
       position: relative;
       font-weight: bold;
       a {
-        font-family: "JetBrains Mono", monospace;
+        font-family: index.$display-font;
         text-decoration: none;
         color: unset;
       }
