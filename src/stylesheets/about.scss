@@ -1,0 +1,59 @@
+@use "index";
+
+$section-max-width: 1000px;
+
+#about header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  .title {
+    h1 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 9vw;
+      margin: 0;
+      text-align: center;
+      @media (max-width: index.$min-title * 10) {
+        font-size: index.$min-title;
+      }
+      @media (min-width: 2250px) {
+        font-size: 2250px * 0.09;
+      }
+    }
+    span {
+      transition: opacity 0.5s ease;
+      font-family: "JetBrains Mono", monospace;
+      &:nth-of-type(2) {
+        transition-delay: 0.3s;
+      }
+    }
+    &.hidden span {
+      opacity: 0;
+    }
+  }
+  .subtitle {
+    font-weight: 500;
+    font-size: 1.25em;
+    span {
+      padding: 0 20px;
+    }
+  }
+}
+
+.section {
+  width: 100vw;
+  padding: 120px 60px;
+  @media (min-width: $section-max-width + 120px) {
+    padding: 120px calc(50vw - #{$section-max-width} / 2);
+  }
+}
+
+.bio {
+  img {
+    width: 50vw;
+    max-width: $section-max-width * 0.5;
+    margin: 0 0 20px 30px;
+    float: right;
+  }
+}

@@ -6,7 +6,26 @@ interface Icon {
 interface Project {
   id: string,
   title: string,
-  shortDescription: string,
+  description: string,
   image: string | string[],
-  type: string
+  type: string,
+  buttons?: AccessTypes
+}
+
+interface SubNavLink {
+  title: string,
+  to: string,
+}
+
+interface NavLink {
+  title: string,
+  to: string,
+  subpages?: SubNavLink[]
+}
+
+interface AccessTypes {
+  ios?: string,
+  android?: string,
+  web?: string,
+  github?: string
 }

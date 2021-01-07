@@ -1,9 +1,13 @@
+@use "sass:color";
+
 $transition: all 0.2s ease;
 $lazy-transition: all 0.5s ease;
 $min-title: 120px;
 $project-button-size: 125px;
 $projects-per-row: 4;
 $card-max-width: 1250px;
+$accent-color: #3cb371;
+$background-accent: color.adjust($accent-color, $lightness: 30%);
 
 body {
   margin: 0;
@@ -21,25 +25,50 @@ title {
 main {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 h1 {
-  font-family: "Sacramento", cursive;
-  font-size: 10vw;
   margin: 0;
+  font-size: 80px;
 }
 
-header {
+p {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 60px;
+  margin: 0 0 20px 0;
+}
+
+#index header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
-  h1 {
-    text-align: center;
-    @media only screen and (max-width: $min-title * 10) {
-      font-size: $min-title;
+  height: 85vh;
+  .title {
+    h1 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 9vw;
+      margin: 0;
+      text-align: center;
+      @media (max-width: $min-title * 10) {
+        font-size: $min-title;
+      }
+      @media (min-width: 2250px) {
+        font-size: 2250px * 0.09;
+      }
+    }
+    span {
+      transition: opacity 0.5s ease;
+      font-family: "JetBrains Mono", monospace;
+      &:nth-of-type(2) {
+        transition-delay: 0.3s;
+      }
+    }
+    &.hidden span {
+      opacity: 0;
     }
   }
   .subtitle {
@@ -114,7 +143,6 @@ header {
 
 .project-card {
   transition: $lazy-transition;
-  margin: 10px;
   display: flex;
   background-color: #fff;
   flex: 1;
@@ -167,4 +195,36 @@ header {
 .ani-link {
   text-decoration: none;
   color: unset;
+  margin: 10px;
+  @media (min-width: $card-max-width + 40px) {
+    align-self: center;
+    width: $card-max-width;
+  }
+}
+
+.accent {
+  background-color: $background-accent;
+}
+
+.styled-underline {
+  position: relative;
+  &::before {
+    pointer-events: none;
+    transition: $transition;
+    content: "";
+    z-index: -1;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-color: $accent-color;
+    height: 10px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  &:hover::before {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: none;
+  }
 }

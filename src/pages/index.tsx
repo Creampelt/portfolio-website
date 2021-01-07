@@ -1,17 +1,20 @@
 import React from "react";
 import "../stylesheets/index.scss";
 import ProjectCard from "../components/ProjectCard";
+import ShowOnLoad from "../components/ShowOnLoad";
 import Projects from "../constants/Projects";
 
 const IndexPage = () => {
   return (
-    <main>
+    <main id={"index"}>
       <title>Emily Sturman</title>
       <header>
-        <h1>Emily Sturman</h1>
+        <ShowOnLoad className={"title"}>
+          <h1><span>Emily </span><span>Sturman</span></h1>
+        </ShowOnLoad>
         <p className={"subtitle"}><span>inventor</span> &bull; <span>developer</span> &bull; <span>designer</span></p>
       </header>
-      <div className={"project-card-container"}>
+      <div id={"projects"} className={"project-card-container"}>
         {Projects.map((project: Project) => <ProjectCard key={project.id} {...project} />)}
       </div>
     </main>

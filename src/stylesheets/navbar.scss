@@ -1,0 +1,61 @@
+@use "index";
+
+nav {
+  transition: index.$transition;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  padding: 30px 40px;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 0 10px #0008;
+  ul {
+    list-style: none;
+    display: flex;
+    li {
+      position: relative;
+      font-weight: bold;
+      a {
+        font-family: "JetBrains Mono", monospace;
+        text-decoration: none;
+        color: unset;
+      }
+    }
+  }
+  & > ul {
+    flex-direction: row;
+    justify-content: flex-end;
+    & > li {
+      padding: 0 20px;
+      & > a:hover ~ .subpages, .subpages:hover {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translate(0);
+        visibility: visible;
+      }
+      & > a {
+        @extend .styled-underline;
+      }
+    }
+  }
+  &.top {
+    box-shadow: none;
+  }
+  .subpages {
+    transition: index.$transition;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    background-color: #f0f0f0;
+    pointer-events: none;
+    z-index: -2;
+    ul {
+
+    }
+  }
+}

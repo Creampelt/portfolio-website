@@ -1,0 +1,163 @@
+@use "index";
+@use "sass:color";
+
+$max-width: 1750px;
+$section-max-width: 1000px;
+$dist-from-top: 25vh;
+$screenshot-offset: 75px;
+
+.project-page {
+  header {
+    width: 100vw;
+    padding: $dist-from-top 60px 0;
+    @media (min-width: $max-width + 120px) {
+      padding-right: calc(50vw - #{$max-width} / 2);
+      padding-left: calc(50vw - #{$max-width} / 2);
+    }
+    .title {
+      width: 40vw;
+      min-width: 500px;
+    }
+    .caption {
+      width: 40vw;
+      min-width: 500px;
+      font-size: 24px;
+    }
+  }
+  & > div:not(.screenshots) {
+    width: 100vw;
+    padding: 120px 60px;
+    @media (min-width: $section-max-width + 120px) {
+      padding: 120px calc(50vw - #{$section-max-width} / 2);
+    }
+  }
+}
+
+.download-buttons {
+  display: flex;
+  flex-direction: row;
+  max-width: 40vw;
+  flex-wrap: wrap;
+  a {
+    transition: index.$transition;
+    height: 40px;
+    margin: 10px;
+    box-shadow: 0 1px 5px #0008;
+    border-radius: 10px;
+    &.text {
+      text-decoration: none;
+      background-color: #000;
+      color: #fff;
+      font-weight: bold;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 5px #0008;
+    }
+    img {
+      height: 100%;
+    }
+    .external-link-icon {
+      margin-left: 7px;
+    }
+    .github-icon {
+      margin-right: 7px;
+    }
+  }
+}
+
+.screenshots {
+  padding: 60px;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.rtl {
+    direction: rtl;
+  }
+  img {
+    position: relative;
+    object-fit: cover;
+  }
+  &.fixed-layout img {
+    object-fit: cover;
+    width: 650px;
+    height: 800px;
+    margin: 40px;
+  }
+}
+
+#simple-subs {
+  .screenshots {
+    padding: 0 60px;
+    img {
+      width: 29vw;
+      max-width: $max-width / 3;
+      &:nth-of-type(1) {
+        top: $screenshot-offset;
+      }
+      &:nth-of-type(3) {
+        top: -$screenshot-offset;
+      }
+    }
+  }
+}
+
+#sv-for-pete, #missfits-website {
+  .screenshots {
+    justify-content: flex-start;
+    img {
+      width: calc(50vw - 70px);
+      &:nth-of-type(2n - 1) {
+        top: -400px;
+      }
+    }
+  }
+}
+
+#tuner-cli {
+  .screenshots {
+    img {
+      flex: 1;
+      object-fit: contain;
+      object-position: right;
+      margin: 30px 50px;
+      &:nth-of-type(2) {
+        object-position: left;
+      }
+      &:last-of-type {
+        object-position: center;
+      }
+    }
+  }
+}
+
+#hyphen-hacks-helper {
+  .screenshots {
+    padding: 60px 15vw;
+    justify-content: flex-start;
+    img {
+      width: 30vw;
+      &:nth-of-type(2n - 1) {
+        top: -300px;
+      }
+    }
+  }
+}
+
+#chair {
+  .screenshots img {
+    width: 750px;
+    height: 750px;
+  }
+}
+
+.problem-solution {
+  p {
+    margin-bottom: 40px;
+  }
+}

@@ -32,7 +32,7 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: "Sacramento",
+            family: "JetBrains Mono",
             weights: ["400"]
           },
           {
@@ -41,6 +41,14 @@ module.exports = {
             weights: ["200..900"]
           }
         ]
+      }
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.svg$/
+        }
       }
     }
   ],
