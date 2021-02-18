@@ -1,6 +1,6 @@
 import React from "react";
 import Projects from "../constants/Projects";
-import DownloadIOS from "../images/download-icons/download-ios.svg";
+import DownloadIOS from "../assets/images/download-icons/download-ios.svg";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import "../stylesheets/project-page.scss";
 
@@ -9,7 +9,7 @@ const DownloadButtons = ({ buttons }: { buttons: AccessTypes }) => (
     {buttons.ios && <a className={"ios"} href={buttons.ios} target={"_blank"}><DownloadIOS /></a>}
     {buttons.android && (
       <a className={"android"} href={buttons.android} target={"_blank"}>
-        <img src={require("../images/download-icons/download-android.png")} alt={"Download from Play Store"} />
+        <img src={require("../assets/images/download-icons/download-android.png")} alt={"Download from Play Store"} />
       </a>
     )}
     {buttons.web && (
@@ -21,7 +21,7 @@ const DownloadButtons = ({ buttons }: { buttons: AccessTypes }) => (
     {buttons.github && (
       <a className={"github text"} href={buttons.github} target={"_blank"}>
         <FaGithub className={"github-icon"} />
-        View source code
+        View code
       </a>
     )}
   </div>

@@ -13,7 +13,7 @@ const LINKS: NavLink[] = [
   },
   {
     title: "About Me",
-    to: "/about"
+    to: "/about/"
   }
 ];
 

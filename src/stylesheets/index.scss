@@ -13,6 +13,8 @@ $background-accent: color.adjust($accent-color, $lightness: 30%);
 $display-font: "JetBrains Mono", monospace;
 $standard-font: "Raleway", sans-serif;
 
+$mobile-size: 930px;
+
 body {
   margin: 0;
 }
@@ -174,9 +176,32 @@ h2 {
     opacity: 0;
     transform: translateY(20px);
   }
-  &:hover::before {
+  &:hover::before, &.show-underline::before {
     opacity: 1;
     transform: translateY(0);
     pointer-events: none;
+  }
+}
+
+@media (max-width: $mobile-size) {
+  h1 {
+    font-size: 19vw;
+  }
+  #index header {
+    .title h1 {
+      font-size: 19vw;
+    }
+    .subtitle span {
+      padding: 0 10px;
+    }
+  }
+  .project-card {
+    flex-direction: column;
+    .image-col {
+      margin: 0;
+    }
+    .column:last-of-type {
+      margin-top: 30px;
+    }
   }
 }

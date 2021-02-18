@@ -36,6 +36,9 @@ nav {
       }
       & > a {
         @extend .styled-underline;
+        &.active {
+          @extend .show-underline;
+        }
       }
     }
   }

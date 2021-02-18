@@ -12,7 +12,6 @@ const AboutPage = () => {
         </ShowOnLoad>
       </header>
       <div className={"bio section accent"}>
-        <img src={require("../images/me.jpg")} alt={"Me!"} />
         <div>
           <h2>Who I am</h2>
           <p>
@@ -27,6 +26,7 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
+      <div className={"bio-img"} />
       <div className={"story section"}>
         <h2>My story</h2>
         <p>

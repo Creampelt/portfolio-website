@@ -15,7 +15,9 @@ const IndexPage = () => {
         <p className={"subtitle"}><span>inventor</span> &bull; <span>developer</span> &bull; <span>designer</span></p>
       </header>
       <div id={"projects"} className={"project-card-container"}>
-        {Projects.map((project: Project) => <ProjectCard key={project.id} {...project} />)}
+        {Projects
+          .filter(({ hidden }: Project) => !hidden)
+          .map((project: Project) => <ProjectCard key={project.id} {...project} />)}
       </div>
     </main>
   );

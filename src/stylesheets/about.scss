@@ -49,11 +49,14 @@ $section-max-width: 1000px;
   }
 }
 
-.bio {
-  img {
-    width: 50vw;
-    max-width: $section-max-width * 0.5;
-    margin: 0 0 20px 30px;
-    float: right;
+.bio-img {
+  width: 100vw;
+  background-image: url("../assets/images/me.jpg");
+  height: 90vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  @media (max-width: index.$mobile-size) {
+    background-attachment: scroll;
   }
 }

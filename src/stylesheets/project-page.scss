@@ -39,11 +39,13 @@ $screenshot-offset: 75px;
   max-width: 40vw;
   flex-wrap: wrap;
   a {
-    transition: index.$transition;
     height: 40px;
     margin: 10px;
-    box-shadow: 0 1px 5px #0008;
-    border-radius: 10px;
+    &.text, img, &.ios svg {
+      transition: index.$transition;
+      box-shadow: 0 1px 5px #0008;
+      border-radius: 6px;
+    }
     &.text {
       text-decoration: none;
       background-color: #000;
@@ -54,11 +56,11 @@ $screenshot-offset: 75px;
       align-items: center;
       justify-content: center;
     }
-    &:hover {
+    &.text:hover, &:hover img, &.ios:hover svg {
       transform: translateY(-5px);
-      box-shadow: 0 5px 5px #0008;
+      box-shadow: 0 5px 7px #0006;
     }
-    img {
+    img, svg {
       height: 100%;
     }
     .external-link-icon {
@@ -83,81 +85,169 @@ $screenshot-offset: 75px;
     position: relative;
     object-fit: cover;
   }
-  &.fixed-layout img {
-    object-fit: cover;
-    width: 650px;
-    height: 800px;
-    margin: 40px;
-  }
-}
-
-#simple-subs {
-  .screenshots {
-    padding: 0 60px;
+  &.fixed-layout {
     img {
-      width: 29vw;
-      max-width: $max-width / 3;
-      &:nth-of-type(1) {
-        top: $screenshot-offset;
-      }
-      &:nth-of-type(3) {
-        top: -$screenshot-offset;
-      }
+      //width: 650px;
+      height: 800px;
+      margin: 40px;
     }
-  }
-}
-
-#sv-for-pete, #missfits-website {
-  .screenshots {
-    justify-content: flex-start;
-    img {
-      width: calc(50vw - 70px);
-      &:nth-of-type(2n - 1) {
-        top: -400px;
-      }
-    }
-  }
-}
-
-#tuner-cli {
-  .screenshots {
-    img {
-      flex: 1;
+    &.contain-img img {
       object-fit: contain;
-      object-position: right;
-      margin: 30px 50px;
-      &:nth-of-type(2) {
-        object-position: left;
-      }
-      &:last-of-type {
-        object-position: center;
-      }
     }
   }
 }
 
-#hyphen-hacks-helper {
-  .screenshots {
-    padding: 60px 15vw;
-    justify-content: flex-start;
-    img {
-      width: 30vw;
-      &:nth-of-type(2n - 1) {
-        top: -300px;
+@media (min-width: index.$mobile-size) {
+  #simple-subs {
+    .screenshots {
+      padding: 0 60px;
+      img {
+        width: 29vw;
+        max-width: $max-width / 3;
+        margin: 0 10px;
+        &:nth-of-type(1) {
+          top: $screenshot-offset;
+        }
+        &:nth-of-type(3) {
+          top: -$screenshot-offset;
+        }
       }
+    }
+  }
+
+  #simple-subs-console {
+    .screenshots {
+      padding: 60px;
+      img {
+        width: 35vw;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  #simple-subs-printer {
+    .screenshots {
+      padding: 60px;
+      img {
+        width: 29vw;
+        max-width: $max-width / 3;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  #sv-for-pete, #missfits-website {
+    .screenshots {
+      justify-content: flex-start;
+      img, p {
+        width: calc(50vw - 70px);
+        &:nth-of-type(2n - 1) {
+          top: -400px;
+        }
+      }
+      p {
+        direction: ltr;
+        padding: 100px 10vw;
+        align-self: flex-start;
+      }
+    }
+  }
+
+  #tuner-cli {
+    .screenshots {
+      img {
+        flex: 1;
+        object-fit: contain;
+        object-position: right;
+        margin: 30px 50px;
+        &:nth-of-type(2) {
+          object-position: left;
+        }
+        &:last-of-type {
+          object-position: center;
+        }
+      }
+    }
+  }
+
+  #hyphen-hacks-helper {
+    .screenshots {
+      padding: 60px 15vw;
+      justify-content: flex-start;
+      img, p {
+        width: 30vw;
+        &:nth-of-type(2n - 1) {
+          top: -300px;
+        }
+      }
+      p {
+        direction: ltr;
+        padding: 100px;
+        align-self: flex-start;
+      }
+    }
+  }
+
+  #chair {
+    .screenshots img {
+      width: 750px;
+      height: 750px;
+    }
+  }
+
+  .problem-solution {
+    p {
+      margin-bottom: 40px;
+    }
+    iframe {
+      margin-top: 30px;
     }
   }
 }
 
-#chair {
-  .screenshots img {
-    width: 750px;
-    height: 750px;
+@media (max-width: index.$mobile-size) {
+  .project-page {
+    header {
+      .title, .caption {
+        min-width: unset;
+        width: 100%;
+      }
+    }
+    .screenshots {
+      flex-direction: column;
+      padding: 30px 0;
+      img {
+        position: static;
+        width: 100%;
+        height: unset;
+      }
+    }
+    &#tuner-cli .screenshots, .screenshots.fixed-layout {
+      padding: 30px 0 0 0;
+      img {
+        margin: 0;
+      }
+    }
   }
-}
-
-.problem-solution {
-  p {
-    margin-bottom: 40px;
+  #sv-for-pete, #missfits-website, #hyphen-hacks-helper {
+    .screenshots {
+      p {
+        direction: ltr;
+        padding: 60px;
+      }
+    }
+  }
+  .download-buttons {
+    max-width: unset;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    a {
+      margin: 10px;
+    }
+  }
+  .problem-solution iframe {
+    margin-top: 30px;
+    width: 100%;
   }
 }

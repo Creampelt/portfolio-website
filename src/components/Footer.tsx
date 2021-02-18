@@ -2,7 +2,9 @@ import React from "react";
 import "../stylesheets/footer.scss";
 import Link from "./Link";
 import Projects from "../constants/Projects";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltLeft, FaLongArrowAltRight, FaEnvelope, FaGithub, FaFileDownload } from "react-icons/fa";
+
+const FilteredProjects = Projects.filter(({ hidden }: Project) => !hidden);
 
 interface Neighbors {
   next?: Project,
@@ -10,8 +12,8 @@ interface Neighbors {
 }
 
 function getProjIndex(key): number {
-  for (let i = 0; i < Projects.length; i++) {
-    if (Projects[i].id === key) {
+  for (let i = 0; i < FilteredProjects.length; i++) {
+    if (FilteredProjects[i].id === key) {
       return i;
     }
   }
@@ -27,8 +29,8 @@ function getNextAndPrev(path?: string): Neighbors {
     return {};
   }
   return {
-    next: index + 1 < Projects.length ? Projects[index + 1] : null,
-    prev: index > 0 ? Projects[index - 1] : null
+    next: index + 1 < FilteredProjects.length ? FilteredProjects[index + 1] : null,
+    prev: index > 0 ? FilteredProjects[index - 1] : null
   };
 }
 
@@ -60,9 +62,20 @@ const Footer = ({ path }: { path?: string }) => {
         </div>
       )}
       <div className={"links"}>
-        <p><a target={"_blank"} href={"mailto:emily@sturman.org"}>emily@sturman.org</a></p>
+        <a target={"_blank"} href={"mailto:emily@sturman.org"}>
+          <span>emily@sturman.org</span>
+          <FaEnvelope className={"link-icon"} />
+        </a>
         <span className={"bullet"}>&bull;</span>
-        <p><a target={"_blank"} href={"https://github.com/Creampelt"}>github.com/Creampelt</a></p>
+        <a target={"_blank"} href={"https://github.com/Creampelt"}>
+          <span>github.com/Creampelt</span>
+          <FaGithub className={"link-icon"} />
+        </a>
+        <span className={"bullet"}>&bull;</span>
+        <a target={"_blank"} href={require("../assets/downloads/portfolio.pdf")}>
+          <span>Download PDF portfolio</span>
+          <FaFileDownload className={"link-icon"} />
+        </a>
       </div>
     </footer>
   )

@@ -9,7 +9,8 @@ interface Project {
   description: string,
   image: string | string[],
   type: string,
-  buttons?: AccessTypes
+  buttons?: AccessTypes,
+  hidden: boolean
 }
 
 interface SubNavLink {
