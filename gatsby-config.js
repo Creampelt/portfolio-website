@@ -18,6 +18,18 @@ module.exports = {
       },
     },
     "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "Emily Sturman Portfolio",
+        shortName: "Emily Sturman",
+        start_url: "/",
+        background_color: "#fff",
+        theme_color: "#3cb371",
+        display: "standalone",
+        icon: "src/assets/images/favicon.svg"
+      }
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",

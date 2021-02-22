@@ -1,13 +1,15 @@
 @use "index";
 
 $section-max-width: 1000px;
+$nav-height: 113px;
 
 #about header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85vh;
+  min-height: 85vh;
+  position: relative;
   .title {
     h1 {
       font-family: index.$display-font;
@@ -43,20 +45,66 @@ $section-max-width: 1000px;
 
 .section {
   width: 100vw;
-  padding: 120px 60px;
-  @media (min-width: $section-max-width + 120px) {
-    padding: 120px calc(50vw - #{$section-max-width} / 2);
+  position: relative;
+  & > div {
+    padding: 120px 60px;
+    @media (min-width: $section-max-width + 120px) {
+      padding: 120px calc(50vw - #{$section-max-width} / 2);
+    }
   }
 }
 
-.bio-img {
-  width: 100vw;
-  background-image: url("../assets/images/me.jpg");
-  height: 90vh;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  @media (max-width: index.$mobile-size) {
-    background-attachment: scroll;
+.sticker {
+  max-width: 30vw;
+  height: 40vh;
+  position: absolute;
+  object-fit: contain;
+  &.diagrams {
+    bottom: 10px;
+    right: 20px;
+  }
+  &.driving {
+    top: 10px;
+    left: 20px;
+  }
+  &.with-sister {
+    top: -30vh;
+    left: 100px;
+  }
+  &.with-dad {
+    top: -150px;
+    right: 0;
+  }
+  @media (max-width: calc(300px / 0.17)) {
+    &.with-sister {
+      left: 11vw;
+    }
+    &.with-dad {
+      max-height: 300px;
+    }
+  }
+}
+
+@media (max-width: index.$mobile-size) {
+  .section {
+    & > div {
+      padding: 120px 60px 40px;
+    }
+    .sticker {
+      margin-bottom: 40px;
+    }
+  }
+  #about header {
+    padding-top: $nav-height + 5px;
+    .title {
+      padding: 20px 0;
+    }
+  }
+  .sticker {
+    position: static;
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+    max-height: unset;
   }
 }

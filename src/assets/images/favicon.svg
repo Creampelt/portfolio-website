@@ -1,0 +1,23 @@
+<svg version="1.1" viewBox="0.0 0.0 32.0 32.0" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10"
+     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        path {
+            fill: #000;
+        }
+        @media (prefers-color-scheme: dark) {
+            path {
+                fill: #fff;
+            }
+        }
+    </style>
+    <clipPath id="p.0">
+        <path d="m0 0l32.0 0l0 32.0l-32.0 0l0 -32.0z" clip-rule="nonzero"/>
+    </clipPath>
+    <g clip-path="url(#p.0)">
+        <path fill-opacity="0.0" d="m0 0l32.0 0l0 32.0l-32.0 0z" fill-rule="evenodd"/>
+        <path fill-opacity="0.0" d="m0.001311811 -12.0013685l32.0 0l0 55.653545l-32.0 0z"
+              fill-rule="evenodd"/>
+        <path d="m5.849647 -0.2157466l20.03125 0l0 5.71875l-14.046875 0l0 7.2499995l13.5 0l0 5.718751l-13.5 0l0 7.328125l14.59375 0l0 5.71875l-20.578125 0l0 -31.734375z"
+              fill-rule="nonzero"/>
+    </g>
+</svg>
