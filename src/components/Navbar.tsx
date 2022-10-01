@@ -1,27 +1,17 @@
 import React from "react";
 import Link from "./Link";
+import NavLinks from "../constants/NavLinks";
 import "../stylesheets/navbar.scss";
 
-const LINKS: NavLink[] = [
-  {
-    title: "My Work",
-    to: "/",
-    // subpages: [{
-    //   title: "SimpleSubs",
-    //   to: "/simple-subs"
-    // }]
-  },
-  {
-    title: "About Me",
-    to: "/about/"
-  }
-];
+type NavbarProps = {
+  path: string
+};
 
-const Navbar = ({ path }: { path: string }) => {
+const Navbar: React.FC<NavbarProps> = ({ path }) => {
   const [top, setTop] = React.useState(true);
 
   const detectTop = () => {
-    if (pageYOffset <= 20) {
+    if (window.scrollY <= 20) {
       setTop(true);
     } else {
       setTop(false);
@@ -36,14 +26,18 @@ const Navbar = ({ path }: { path: string }) => {
   return (
     <nav className={top ? "top" : ""}>
       <ul>
-        {LINKS.map(({ title, to, subpages }, i) => (
+        {NavLinks.map(({ title, to, subpages }, i) => (
           <li key={i}>
             <Link className={path === to ? "active" : ""} to={to}>{title}</Link>
             {subpages && (
               <div className={"subpages"}>
                 <ul>
                   {subpages.map(({ title, to }, i) => (
-                    <li key={i}><Link className={path === to ? "active" : ""} to={to}>{title}</Link></li>
+                    <li key={i}>
+                      <Link className={path === to ? "active" : ""} to={to}>
+                        {title}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>

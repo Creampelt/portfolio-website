@@ -1,4 +1,4 @@
-@use "index";
+@use "main";
 
 .tl-edges {
   min-height: 100vh;
@@ -16,12 +16,12 @@
   justify-content: center;
   text-align: center;
   h1 {
-    font-family: index.$display-font;
+    font-family: main.$display-font;
     font-size: 9vw;
     margin: 0;
     text-align: center;
-    @media (max-width: index.$min-title * 10) {
-      font-size: index.$min-title;
+    @media (max-width: main.$min-title * 10) {
+      font-size: main.$min-title;
     }
     @media (min-width: 2250px) {
       font-size: 2250px * 0.09;
@@ -33,17 +33,17 @@
     align-items: center;
     direction: rtl;
     .arrow {
-      transition: index.$lazy-transition;
+      transition: main.$lazy-transition;
       font-size: 75px;
       margin: 0 20px;
-      color: index.$accent-color;
+      color: main.$accent-color;
     }
     .hidden {
       visibility: hidden;
     }
     a {
       text-decoration: none;
-      font-family: index.$display-font;
+      font-family: main.$display-font;
       color: inherit;
     }
     p:hover ~ .arrow {

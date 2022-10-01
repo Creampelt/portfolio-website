@@ -1,4 +1,4 @@
-@use "index";
+@use "main";
 
 $section-max-width: 1000px;
 $nav-height: 113px;
@@ -10,33 +10,11 @@ $nav-height: 113px;
   justify-content: center;
   min-height: 85vh;
   position: relative;
-  .title {
-    h1 {
-      font-family: index.$display-font;
-      font-size: 9vw;
-      margin: 0;
-      text-align: center;
-      @media (max-width: index.$min-title * 10) {
-        font-size: index.$min-title;
-      }
-      @media (min-width: 2250px) {
-        font-size: 2250px * 0.09;
-      }
-    }
-    span {
-      transition: opacity 0.5s ease;
-      font-family: index.$display-font;
-      &:nth-of-type(2) {
-        transition-delay: 0.3s;
-      }
-    }
-    &.hidden span {
-      opacity: 0;
-    }
-  }
+
   .subtitle {
     font-weight: 500;
     font-size: 1.25em;
+
     span {
       padding: 0 20px;
     }
@@ -85,7 +63,7 @@ $nav-height: 113px;
   }
 }
 
-@media (max-width: index.$mobile-size) {
+@media (max-width: main.$mobile-size) {
   .section {
     & > div {
       padding: 120px 60px 40px;

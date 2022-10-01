@@ -1,7 +1,7 @@
-@use "index";
+@use "main";
 
 nav {
-  transition: index.$transition;
+  transition: main.$transition;
   position: fixed;
   width: 100vw;
   top: 0;
@@ -10,30 +10,37 @@ nav {
   z-index: 1000;
   background-color: #fff;
   box-shadow: 0 0 10px #0008;
+
   ul {
     list-style: none;
     display: flex;
+
     li {
       position: relative;
       font-weight: bold;
+
       a {
-        font-family: index.$display-font;
+        font-family: main.$display-font;
         text-decoration: none;
         color: unset;
       }
     }
   }
+
   & > ul {
     flex-direction: row;
     justify-content: flex-end;
+
     & > li {
       padding: 0 20px;
+
       & > a:hover ~ .subpages, .subpages:hover {
         pointer-events: auto;
         opacity: 1;
         transform: translate(0);
         visibility: visible;
       }
+
       & > a {
         @extend .styled-underline;
         &.active {
@@ -42,12 +49,14 @@ nav {
       }
     }
   }
+
   &.top {
     box-shadow: none;
     background-color: #fff0;
   }
+
   .subpages {
-    transition: index.$transition;
+    transition: main.$transition;
     position: absolute;
     top: 100%;
     right: 0;

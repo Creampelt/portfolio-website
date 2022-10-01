@@ -1,19 +1,20 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ProjectPage from "../components/ProjectPage";
+import ProjectImages from "../components/ProjectImages";
+import { BackgroundProps, ItemProps } from "../constants/AnimateProps";
 
-const SCREENSHOTS = [
-  require("../assets/images/project-screenshots/tuner-cli/tuner--help.jpg"),
-  require("../assets/images/project-screenshots/tuner-cli/a441.png"),
-  require("../assets/images/project-screenshots/tuner-cli/tuner-functionality.jpg")
+const SCREENSHOTS: string[] = [
+  require("../assets/images/project-screenshots/tuner-cli/tuner--help.jpg").default,
+  require("../assets/images/project-screenshots/tuner-cli/a441.png").default,
+  require("../assets/images/project-screenshots/tuner-cli/tuner-functionality.jpg").default
 ];
 
-const TunerCLIPage = () => (
+const TunerCLIPage: React.FC = () => (
   <ProjectPage id={"tuner-cli"}>
-    <div className={"screenshots"}>
-      {SCREENSHOTS.map((src, i) => <img key={i} src={src} alt={"sv-for-pete-" + i} />)}
-    </div>
-    <div className={"problem-solution accent"}>
-      <p>
+    <ProjectImages images={SCREENSHOTS} alt={"Tuner CLI"} />
+    <motion.div {...BackgroundProps} className={"problem-solution accent"}>
+      <motion.p {...ItemProps}>
         Aside from computer science, one of my biggest passions is music. I’ve played violin for over ten years, and I
         love it almost as much as I love making. I’m also constantly fascinated by how these two interests overlap, so
         when we were assigned an open-ended research project in orchestra class, I decided to look at music through a
@@ -21,8 +22,8 @@ const TunerCLIPage = () => (
         processing data), I built a tool that could find the average frequency of a .wav recording. Afterwards, I
         adapted the program into a command-line interface that would also report the pitch and intonation of the
         recordings.
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   </ProjectPage>
 );
 

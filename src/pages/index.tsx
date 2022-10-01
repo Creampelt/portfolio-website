@@ -1,26 +1,32 @@
 import React from "react";
-import "../stylesheets/index.scss";
+import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
-import ShowOnLoad from "../components/ShowOnLoad";
 import Projects from "../constants/Projects";
+import { ItemProps, ContainerProps } from "../constants/AnimateProps";
+import "../stylesheets/index.scss";
 
-const IndexPage = () => {
-  return (
-    <main id={"index"}>
-      <title>Emily Sturman</title>
-      <header>
-        <ShowOnLoad className={"title"}>
-          <h1><span>Emily </span><span>Sturman</span></h1>
-        </ShowOnLoad>
-        <p className={"subtitle"}><span>inventor</span> &bull; <span>developer</span> &bull; <span>designer</span></p>
-      </header>
-      <div id={"projects"} className={"project-card-container"}>
-        {Projects
-          .filter(({ hidden }: Project) => !hidden)
-          .map((project: Project) => <ProjectCard key={project.id} {...project} />)}
+const projectsToDisplay = Projects
+  .filter(({ hidden }) => !hidden)
+  .map((project) => <ProjectCard key={project.id} {...project} />);
+
+const IndexPage: React.FC = () => (
+  <motion.main {...ContainerProps} id={"index"}>
+    <header>
+      <div className={"title main-title"}>
+        <h1>
+          <motion.span {...ItemProps}>Emily </motion.span>
+          <motion.span {...ItemProps}>Sturman</motion.span>
+        </h1>
       </div>
-    </main>
-  );
-};
+      <p className={"subtitle"}>
+        <motion.span {...ItemProps}>inventor</motion.span>&bull;
+        <motion.span {...ItemProps}>developer</motion.span>&bull;
+        <motion.span {...ItemProps}>designer</motion.span></p>
+    </header>
+    <div id={"projects"} className={"project-card-container"}>
+      {projectsToDisplay}
+    </div>
+  </motion.main>
+);
 
 export default IndexPage;

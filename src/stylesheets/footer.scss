@@ -1,23 +1,26 @@
-@use "index";
+@use "main";
 $max-width: 1000px;
 
 footer {
   color: #fff;
-  background-color: index.$accent-color;
+  background-color: main.$accent-color;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
   padding: 60px;
+
   a {
     text-decoration: none;
     color: inherit;
   }
+
   .next-prev-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex: 1;
+
     div {
       padding: 20px 40px;
       flex: 1;
@@ -25,86 +28,94 @@ footer {
       display: flex;
       align-items: center;
       justify-content: flex-start;
+
       .arrow {
-        transition: index.$lazy-transition;
+        transition: main.$lazy-transition;
         font-size: 75px;
         margin: 0 20px;
-        color: index.$background-accent;
+        color: main.$background-accent;
       }
+
       &.prev {
         direction: rtl;
       }
+
       &.next {
         text-align: left;
       }
+
       p {
         @extend .styled-underline;
-        transition: index.$transition 0.25s;
+        transition: main.$transition 0.25s;
         z-index: 10;
+
         &::before {
-          transition: index.$lazy-transition;
-          background-color: index.$background-accent;
+          transition: main.$lazy-transition;
+          background-color: main.$background-accent;
         }
       }
+
       &.prev p:hover ~ .arrow {
         transform: translateX(-20px);
       }
+
       &.next p:hover ~ .arrow {
         transform: translateX(20px);
       }
     }
   }
+
   .links {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
-    //p {
-    //  flex: 1;
-    //  margin: 0;
-    //  &:first-of-type {
-    //    text-align: right;
-    //  }
-    //  &:last-of-type {
-    //    text-align: left;
-    //  }
-    //}
+
     a {
-      font-family: index.$display-font;
+      font-family: main.$display-font;
       font-size: 16px;
+
       &:hover {
         text-decoration: underline;
       }
     }
+
     .bullet {
       margin: 0 20px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .link-icon {
       display: none;
     }
   }
-  @media (max-width: index.$mobile-size) {
+
+  @media (max-width: main.$mobile-size) {
     .next-prev-buttons {
       div {
         flex-direction: column-reverse;
         justify-content: flex-end;
       }
     }
+
     .links {
       justify-content: center;
+
       .bullet, a span {
         display: none
       }
+
       a {
         padding: 0 20px;
-        transition: index.$transition;
+        transition: main.$transition;
+
         &:hover {
           opacity: 0.9;
         }
       }
+
       .link-icon {
         display: block;
         font-size: 30px;

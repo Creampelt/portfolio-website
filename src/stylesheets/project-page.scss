@@ -1,5 +1,6 @@
-@use "index";
+@use "main";
 @use "sass:color";
+@use "sass:math";
 
 $max-width: 1750px;
 $section-max-width: 1000px;
@@ -10,23 +11,28 @@ $screenshot-offset: 75px;
   header {
     width: 100vw;
     padding: $dist-from-top 60px 0;
+
     @media (min-width: $max-width + 120px) {
       padding-right: calc(50vw - #{$max-width} / 2);
       padding-left: calc(50vw - #{$max-width} / 2);
     }
+
     .title {
       width: 40vw;
       min-width: 500px;
     }
+
     .caption {
       width: 40vw;
       min-width: 500px;
       font-size: 24px;
     }
   }
+
   & > div:not(.screenshots) {
     width: 100vw;
     padding: 120px 60px;
+
     @media (min-width: $section-max-width + 120px) {
       padding: 120px calc(50vw - #{$section-max-width} / 2);
     }
@@ -38,14 +44,17 @@ $screenshot-offset: 75px;
   flex-direction: row;
   max-width: 40vw;
   flex-wrap: wrap;
+
   a {
     height: 40px;
     margin: 10px;
+
     &.text, img, &.ios svg {
-      transition: index.$transition;
+      transition: main.$transition;
       box-shadow: 0 1px 5px #0008;
       border-radius: 6px;
     }
+
     &.text {
       text-decoration: none;
       background-color: #000;
@@ -56,16 +65,20 @@ $screenshot-offset: 75px;
       align-items: center;
       justify-content: center;
     }
+
     &.text:hover, &:hover img, &.ios:hover svg {
       transform: translateY(-5px);
       box-shadow: 0 5px 7px #0006;
     }
+
     img, svg {
       height: 100%;
     }
+
     .external-link-icon {
       margin-left: 7px;
     }
+
     .github-icon {
       margin-right: 7px;
     }
@@ -78,36 +91,42 @@ $screenshot-offset: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
+
   &.rtl {
     direction: rtl;
   }
+
   img {
     position: relative;
     object-fit: cover;
   }
+
   &.fixed-layout {
     img {
-      //width: 650px;
       height: 800px;
       margin: 40px;
     }
+
     &.contain-img img {
       object-fit: contain;
     }
   }
 }
 
-@media (min-width: index.$mobile-size) {
+@media (min-width: main.$mobile-size) {
   #simple-subs {
     .screenshots {
       padding: 0 60px;
+
       img {
         width: 29vw;
-        max-width: $max-width / 3;
+        max-width: math.div($max-width, 3);
         margin: 0 10px;
+
         &:nth-of-type(1) {
           top: $screenshot-offset;
         }
+
         &:nth-of-type(3) {
           top: -$screenshot-offset;
         }
@@ -118,6 +137,7 @@ $screenshot-offset: 75px;
   #simple-subs-console {
     .screenshots {
       padding: 60px;
+
       img {
         width: 35vw;
         margin: 0 10px;
@@ -128,9 +148,10 @@ $screenshot-offset: 75px;
   #simple-subs-printer {
     .screenshots {
       padding: 60px;
+
       img {
         width: 29vw;
-        max-width: $max-width / 3;
+        max-width: math.div($max-width, 3);
         margin: 0 10px;
       }
     }
@@ -139,12 +160,15 @@ $screenshot-offset: 75px;
   #sv-for-pete, #missfits-website {
     .screenshots {
       justify-content: flex-start;
+
       img, p {
         width: calc(50vw - 70px);
+
         &:nth-of-type(2n - 1) {
           top: -400px;
         }
       }
+
       p {
         direction: ltr;
         padding: 100px 10vw;
@@ -160,9 +184,11 @@ $screenshot-offset: 75px;
         object-fit: contain;
         object-position: right;
         margin: 30px 50px;
+
         &:nth-of-type(2) {
           object-position: left;
         }
+
         &:last-of-type {
           object-position: center;
         }
@@ -174,12 +200,15 @@ $screenshot-offset: 75px;
     .screenshots {
       padding: 60px 15vw;
       justify-content: flex-start;
+
       img, p {
         width: 30vw;
+
         &:nth-of-type(2n - 1) {
           top: -300px;
         }
       }
+
       p {
         direction: ltr;
         padding: 100px;
@@ -199,13 +228,14 @@ $screenshot-offset: 75px;
     p {
       margin-bottom: 40px;
     }
+
     iframe {
       margin-top: 30px;
     }
   }
 }
 
-@media (max-width: index.$mobile-size) {
+@media (max-width: main.$mobile-size) {
   .project-page {
     header {
       .title, .caption {
@@ -213,39 +243,48 @@ $screenshot-offset: 75px;
         width: 100%;
       }
     }
+
     .screenshots {
       flex-direction: column;
       padding: 30px 0;
+
       img {
         position: static;
         width: 100%;
         height: unset;
       }
     }
+
     &#tuner-cli .screenshots, .screenshots.fixed-layout {
       padding: 30px 0 0 0;
+
       img {
         margin: 0;
       }
     }
   }
+
   #sv-for-pete, #missfits-website, #hyphen-hacks-helper {
     .screenshots {
+
       p {
         direction: ltr;
         padding: 60px;
       }
     }
   }
+
   .download-buttons {
     max-width: unset;
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+
     a {
       margin: 10px;
     }
   }
+
   .problem-solution iframe {
     margin-top: 30px;
     width: 100%;

@@ -7,3 +7,6 @@
 // And to shim assets, use (one file extension per `declare`):
 declare module "*.png";
 declare module "*.svg";
+declare module "*.jpg";
+declare module "*.pdf";
+declare module "gatsby-plugin-transition-link";

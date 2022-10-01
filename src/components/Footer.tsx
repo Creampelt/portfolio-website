@@ -3,6 +3,7 @@ import "../stylesheets/footer.scss";
 import Link from "./Link";
 import Projects from "../constants/Projects";
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaEnvelope, FaGithub, FaFileDownload } from "react-icons/fa";
+import resume from "../assets/downloads/resume.pdf";
 
 const FilteredProjects = Projects.filter(({ hidden }: Project) => !hidden);
 
@@ -11,34 +12,40 @@ interface Neighbors {
   prev?: Project
 }
 
-function getProjIndex(key): number {
-  for (let i = 0; i < FilteredProjects.length; i++) {
-    if (FilteredProjects[i].id === key) {
-      return i;
-    }
-  }
-  return -1;
+type FooterProps = {
+  path?: string
 }
 
-function getNextAndPrev(path?: string): Neighbors {
-  if (!path) {
-    return {};
-  }
-  let index = getProjIndex(path.substr(1, path.length - 2));
-  if (index === -1) {
-    return {};
-  }
-  return {
-    next: index + 1 < FilteredProjects.length ? FilteredProjects[index + 1] : null,
-    prev: index > 0 ? FilteredProjects[index - 1] : null
-  };
-}
-
-const Footer = ({ path }: { path?: string }) => {
+const Footer: React.FC<FooterProps> = ({ path }) => {
   const [{ prev, next }, setNeighbors]: [state: Neighbors, setState: (newState: Neighbors) => void] = React.useState({});
+
   React.useEffect(() => {
     setTimeout(() => setNeighbors(getNextAndPrev(path)), 250);
   }, [path]);
+
+  const getProjIndex = (key: string): number => {
+    for (let i = 0; i < FilteredProjects.length; i++) {
+      if (FilteredProjects[i].id === key) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  const getNextAndPrev = (path?: string): Neighbors => {
+    if (!path) {
+      return {};
+    }
+    let index = getProjIndex(path.substring(1, 1 + path.length - 2));
+    if (index === -1) {
+      return {};
+    }
+    return {
+      next: index + 1 < FilteredProjects.length ? FilteredProjects[index + 1] : undefined,
+      prev: index > 0 ? FilteredProjects[index - 1] : undefined
+    };
+  }
+
   return (
     <footer>
       {(prev || next) && (
@@ -63,7 +70,7 @@ const Footer = ({ path }: { path?: string }) => {
       )}
       <div className={"links"}>
         <a target={"_blank"} href={"mailto:emily@sturman.org"}>
-          <span>emily@sturman.org</span>
+          <span>sturman@utexas.edu</span>
           <FaEnvelope className={"link-icon"} />
         </a>
         <span className={"bullet"}>&bull;</span>
@@ -72,8 +79,8 @@ const Footer = ({ path }: { path?: string }) => {
           <FaGithub className={"link-icon"} />
         </a>
         <span className={"bullet"}>&bull;</span>
-        <a target={"_blank"} href={require("../assets/downloads/portfolio.pdf")}>
-          <span>Download PDF portfolio</span>
+        <a target={"_blank"} href={resume}>
+          <span>Download resume</span>
           <FaFileDownload className={"link-icon"} />
         </a>
       </div>
