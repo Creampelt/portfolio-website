@@ -1,9 +1,11 @@
+@use "constants";
 @use "main";
+
 $max-width: 1000px;
 
 footer {
   color: #fff;
-  background-color: main.$accent-color;
+  background-color: constants.$accent-color;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -30,10 +32,10 @@ footer {
       justify-content: flex-start;
 
       .arrow {
-        transition: main.$lazy-transition;
+        transition: constants.$lazy-transition;
         font-size: 75px;
         margin: 0 20px;
-        color: main.$background-accent;
+        color: constants.$background-accent;
       }
 
       &.prev {
@@ -46,12 +48,12 @@ footer {
 
       p {
         @extend .styled-underline;
-        transition: main.$transition 0.25s;
+        transition: constants.$transition 0.25s;
         z-index: 10;
 
         &::before {
-          transition: main.$lazy-transition;
-          background-color: main.$background-accent;
+          transition: constants.$lazy-transition;
+          background-color: constants.$background-accent;
         }
       }
 
@@ -72,7 +74,7 @@ footer {
     align-items: stretch;
 
     a {
-      font-family: main.$display-font;
+      font-family: constants.$display-font;
       font-size: 16px;
 
       &:hover {
@@ -92,7 +94,7 @@ footer {
     }
   }
 
-  @media (max-width: main.$mobile-size) {
+  @media (max-width: constants.$mobile-size) {
     .next-prev-buttons {
       div {
         flex-direction: column-reverse;
@@ -109,7 +111,7 @@ footer {
 
       a {
         padding: 0 20px;
-        transition: main.$transition;
+        transition: constants.$transition;
 
         &:hover {
           opacity: 0.9;

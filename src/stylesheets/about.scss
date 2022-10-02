@@ -1,4 +1,4 @@
-@use "main";
+@use "constants";
 
 $section-max-width: 1000px;
 $nav-height: 113px;
@@ -63,7 +63,7 @@ $nav-height: 113px;
   }
 }
 
-@media (max-width: main.$mobile-size) {
+@media (max-width: constants.$mobile-size) {
   .section {
     & > div {
       padding: 120px 60px 40px;

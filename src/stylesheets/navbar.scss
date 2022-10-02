@@ -1,7 +1,8 @@
+@use "constants";
 @use "main";
 
 nav {
-  transition: main.$transition;
+  transition: constants.$transition;
   position: fixed;
   width: 100vw;
   top: 0;
@@ -20,7 +21,7 @@ nav {
       font-weight: bold;
 
       a {
-        font-family: main.$display-font;
+        font-family: constants.$display-font;
         text-decoration: none;
         color: unset;
       }
@@ -56,7 +57,7 @@ nav {
   }
 
   .subpages {
-    transition: main.$transition;
+    transition: constants.$transition;
     position: absolute;
     top: 100%;
     right: 0;

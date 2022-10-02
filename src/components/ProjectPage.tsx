@@ -11,7 +11,10 @@ type ProjectPageProps = React.PropsWithChildren<{
 }>;
 
 const ProjectPage: React.FC<ProjectPageProps> = ({ id, children }) => {
-  const { title, description, buttons = {} }: Project = Projects.filter((project) => project.id === id)[0]
+  const project = Projects.find((project) => project.id === id);
+  if (!project)
+    return null;
+  const { title, description, buttons = {} } = project;
   return (
     <motion.main {...ContainerProps} className={"project-page"} id={id}>
       <header>

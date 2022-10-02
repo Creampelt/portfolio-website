@@ -1,0 +1,16 @@
+@use "sass:color";
+
+$transition: all 0.2s ease;
+$lazy-transition: all 0.5s ease;
+
+$min-title: 120px;
+$project-button-size: 125px;
+$card-max-width: 1250px;
+
+$accent-color: #3cb371;
+$background-accent: color.adjust($accent-color, $lightness: 30%);
+
+$display-font: "JetBrains Mono", monospace;
+$standard-font: "Raleway", sans-serif;
+
+$mobile-size: 930px;

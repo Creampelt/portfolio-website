@@ -1,19 +1,4 @@
-@use "sass:color";
-
-$transition: all 0.2s ease;
-$lazy-transition: all 0.5s ease;
-
-$min-title: 120px;
-$project-button-size: 125px;
-$card-max-width: 1250px;
-
-$accent-color: #3cb371;
-$background-accent: color.adjust($accent-color, $lightness: 30%);
-
-$display-font: "JetBrains Mono", monospace;
-$standard-font: "Raleway", sans-serif;
-
-$mobile-size: 930px;
+@use "constants";
 
 body {
   margin: 0;
@@ -21,7 +6,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: $standard-font;
+  font-family: constants.$standard-font;
 }
 
 main {
@@ -45,13 +30,13 @@ h2 {
 
 .main-title {
   h1 {
-    font-family: $display-font;
+    font-family: constants.$display-font;
     font-size: 9vw;
     margin: 0;
     text-align: center;
 
-    @media (max-width: $min-title * 10) {
-      font-size: $min-title;
+    @media (max-width: constants.$min-title * 10) {
+      font-size: constants.$min-title;
     }
 
     @media (min-width: 2250px) {
@@ -60,7 +45,7 @@ h2 {
   }
 
   span {
-    font-family: $display-font;
+    font-family: constants.$display-font;
   }
 
   &.hidden span {
@@ -85,14 +70,17 @@ h2 {
   border-radius: 20px;
   box-shadow: 0 0 15px #0005;
   padding: 60px 30px;
-  cursor: pointer;
 
-  @media (min-width: $card-max-width + 40px) {
-    align-self: center;
-    width: $card-max-width;
+  &:not(.under-construction) {
+    cursor: pointer;
   }
 
-  &:hover {
+  @media (min-width: constants.$card-max-width + 40px) {
+    align-self: center;
+    width: constants.$card-max-width;
+  }
+
+  &:hover:not(.under-construction) {
     box-shadow: 0 0 20px #0009;
 
     .column {
@@ -103,7 +91,7 @@ h2 {
   }
 
   .column {
-    transition: $lazy-transition;
+    transition: constants.$lazy-transition;
     flex: 1;
     margin: 0 30px;
 
@@ -128,7 +116,7 @@ h2 {
     }
 
     img {
-      transition: $lazy-transition;
+      transition: constants.$lazy-transition;
       width: 100%;
     }
 
@@ -138,19 +126,19 @@ h2 {
   }
 }
 
-.ani-link {
+.card-link {
   text-decoration: none;
   color: unset;
   margin: 10px;
 
-  @media (min-width: $card-max-width + 40px) {
+  @media (min-width: constants.$card-max-width + 40px) {
     align-self: center;
-    width: $card-max-width;
+    width: constants.$card-max-width;
   }
 }
 
 .accent {
-  background-color: $background-accent;
+  background-color: constants.$background-accent;
 }
 
 .styled-underline {
@@ -158,13 +146,13 @@ h2 {
 
   &::before {
     pointer-events: none;
-    transition: $transition;
+    transition: constants.$transition;
     content: "";
     z-index: -1;
     position: absolute;
     bottom: -5px;
     left: 0;
-    background-color: $accent-color;
+    background-color: constants.$accent-color;
     height: 10px;
     width: 100%;
     opacity: 0;
@@ -178,7 +166,7 @@ h2 {
   }
 }
 
-@media (max-width: $mobile-size) {
+@media (max-width: constants.$mobile-size) {
   h1 {
     font-size: 19vw;
   }

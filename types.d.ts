@@ -10,7 +10,8 @@ interface Project {
   image: string | string[],
   type: string,
   buttons?: AccessTypes,
-  hidden: boolean
+  hidden: boolean,
+  incomplete: boolean
 }
 
 interface SubNavLink {

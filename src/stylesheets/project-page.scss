@@ -1,4 +1,4 @@
-@use "main";
+@use "constants";
 @use "sass:color";
 @use "sass:math";
 
@@ -50,7 +50,7 @@ $screenshot-offset: 75px;
     margin: 10px;
 
     &.text, img, &.ios svg {
-      transition: main.$transition;
+      transition: constants.$transition;
       box-shadow: 0 1px 5px #0008;
       border-radius: 6px;
     }
@@ -113,7 +113,7 @@ $screenshot-offset: 75px;
   }
 }
 
-@media (min-width: main.$mobile-size) {
+@media (min-width: constants.$mobile-size) {
   #simple-subs {
     .screenshots {
       padding: 0 60px;
@@ -235,7 +235,7 @@ $screenshot-offset: 75px;
   }
 }
 
-@media (max-width: main.$mobile-size) {
+@media (max-width: constants.$mobile-size) {
   .project-page {
     header {
       .title, .caption {
