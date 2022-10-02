@@ -5,7 +5,9 @@ import Projects from "../constants/Projects";
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaEnvelope, FaGithub, FaFileDownload } from "react-icons/fa";
 import resume from "../assets/downloads/resume.pdf";
 
-const FilteredProjects = Projects.filter(({ hidden }: Project) => !hidden);
+const FilteredProjects = Projects.filter(({ hidden, incomplete }: Project) => (
+  !hidden && !incomplete
+));
 
 interface Neighbors {
   next?: Project,
@@ -17,34 +19,24 @@ type FooterProps = {
 }
 
 const Footer: React.FC<FooterProps> = ({ path }) => {
-  const [{ prev, next }, setNeighbors]: [state: Neighbors, setState: (newState: Neighbors) => void] = React.useState({});
-
-  React.useEffect(() => {
-    setTimeout(() => setNeighbors(getNextAndPrev(path)), 250);
-  }, [path]);
-
-  const getProjIndex = (key: string): number => {
-    for (let i = 0; i < FilteredProjects.length; i++) {
-      if (FilteredProjects[i].id === key) {
-        return i;
-      }
-    }
-    return -1;
-  }
+  const [{ prev, next }, setNeighbors] = React.useState<Neighbors>({});
 
   const getNextAndPrev = (path?: string): Neighbors => {
     if (!path) {
       return {};
     }
-    let index = getProjIndex(path.substring(1, 1 + path.length - 2));
-    if (index === -1) {
-      return {};
-    }
-    return {
+    const index = FilteredProjects.findIndex(({ id }) => (
+      id === path.substring(1, 1 + path.length - 2)
+    ));
+    return index === -1 ? {} : {
       next: index + 1 < FilteredProjects.length ? FilteredProjects[index + 1] : undefined,
       prev: index > 0 ? FilteredProjects[index - 1] : undefined
     };
   }
+
+  React.useEffect(() => {
+    setNeighbors(getNextAndPrev(path));
+  }, [path]);
 
   return (
     <footer>
