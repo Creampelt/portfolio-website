@@ -2,8 +2,7 @@ import React from "react";
 import "../stylesheets/footer.scss";
 import Link from "./Link";
 import Projects from "../constants/Projects";
-import { FaLongArrowAltLeft, FaLongArrowAltRight, FaEnvelope, FaGithub, FaFileDownload } from "react-icons/fa";
-import resume from "../assets/downloads/resume.pdf";
+import { FaLongArrowAltLeft, FaLongArrowAltRight, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const FilteredProjects = Projects.filter(({ hidden, incomplete }: Project) => (
   !hidden && !incomplete
@@ -71,9 +70,9 @@ const Footer: React.FC<FooterProps> = ({ path }) => {
           <FaGithub className={"link-icon"} />
         </a>
         <span className={"bullet"}>&bull;</span>
-        <a target={"_blank"} href={resume}>
-          <span>Download resume</span>
-          <FaFileDownload className={"link-icon"} />
+        <a target={"_blank"} href={"https://www.linkedin.com/in/emily-sturman/"}>
+          <span>linkedin.com/in/emily-sturman/</span>
+          <FaLinkedin className={"link-icon"} />
         </a>
       </div>
     </footer>
