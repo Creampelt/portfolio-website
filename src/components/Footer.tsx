@@ -17,7 +17,7 @@ type FooterProps = {
   path?: string
 }
 
-const Footer: React.FC<FooterProps> = ({ path }) => {
+const Footer: React.FunctionComponent<FooterProps> = ({ path }) => {
   const [{ prev, next }, setNeighbors] = React.useState<Neighbors>({});
 
   const getNextAndPrev = (path?: string): Neighbors => {

@@ -27,6 +27,10 @@ $screenshot-offset: 75px;
       min-width: 500px;
       font-size: 24px;
     }
+
+    .log-in {
+      font-size: 16px;
+    }
   }
 
   & > div:not(.screenshots) {
@@ -134,7 +138,7 @@ $screenshot-offset: 75px;
     }
   }
 
-  #simple-subs-console {
+  #simple-subs-console, #qpp-website, #org-assistant {
     .screenshots {
       padding: 60px;
 
@@ -266,7 +270,6 @@ $screenshot-offset: 75px;
 
   #sv-for-pete, #missfits-website, #hyphen-hacks-helper {
     .screenshots {
-
       p {
         direction: ltr;
         padding: 60px;

@@ -7,7 +7,7 @@ type NavbarProps = {
   path: string
 };
 
-const Navbar: React.FC<NavbarProps> = ({ path }) => {
+const Navbar: React.FunctionComponent<NavbarProps> = ({ path }) => {
   const [top, setTop] = React.useState(true);
 
   const detectTop = () => {
