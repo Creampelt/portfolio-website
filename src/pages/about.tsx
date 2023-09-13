@@ -47,8 +47,8 @@ const AboutPage: React.FunctionComponent = () => (
         <motion.p {...ItemProps}>
           Hi! My name is Emily, and I'm currently a junior in the Turing Scholars Honors Program in Computer Science
           with a minor in robotics at UT Austin. I have developed skills in Typescript, Python, Ruby, C++, and Java as
-          well as in building full-stack applications using tools such as React, Firebase, and GraphQL. If you have the
-          time, I'd encourage you to look at my <a target="_blank" href={RESUME}>resume</a> or
+          well as in using tools such as React, Firebase, GraphQL, and ROS. If you have the time, I'd encourage you to
+          look at my <a target="_blank" href={RESUME}>resume</a> or
           my <a target="_blank" href="https://github.com/Creampelt">Github</a>, where you can better understand the
           projects I’ve worked on so far.
         </motion.p>
@@ -76,17 +76,15 @@ const AboutPage: React.FunctionComponent = () => (
           to my school’s IT department, and it is still in use to this day.
         </motion.p>
         <motion.p {...ItemProps}>
-          In the summer of 2022, I had the opportunity to participate in the Meta University program, where I was able
-          to improve my web development skills through a ten-week boot camp that culminated in a six-week capstone
-          project. Working closely with my mentor, I enjoyed enhancing my skills in fullstack development and managing
-          complex projects while also getting to learn how the technologies I used were deployed at scale.
-        </motion.p>
-        <motion.p {...ItemProps}>
-          This past summer, I interned at Stripe on the Supportability Intelligence team to build
-          supportability-rules-srv (SRS), a full-stack application that allowed non-technical strategists to view and
-          configure accurate, deterministic supportability rules for different types of merchants. Not only was I able
-          to work on SRS, but I also made key design decisions, presented and demoed SRS to key stakeholders, and was
-          the primary contact for many aspects of the project.
+          For the past two summers, I have had the opportunity to develop my experience in a working environment. In the
+          summer of 2022, I participated in the Meta University program, where I was able to improve my web development
+          skills through a ten-week boot camp that culminated in a six-week capstone project. Working closely with my
+          mentor, I enjoyed enhancing my skills in fullstack development and managing complex projects while also
+          getting to learn how the technologies I used were deployed at scale. This past summer, I interned at Stripe on
+          the Supportability Intelligence team to build supportability-rules-srv (SRS), a full-stack application that
+          allowed non-technical strategists to view and configure accurate, deterministic supportability rules for
+          different types of merchants. As well as just writing code, I made key design decisions, presented and demoed
+          SRS to key stakeholders, and was the primary contact for many aspects of the project.
         </motion.p>
         <motion.p {...ItemProps}>
           This semester, I have also begun to get involved in research at
