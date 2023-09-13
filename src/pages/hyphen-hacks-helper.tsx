@@ -13,7 +13,7 @@ const SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/hyphen-hacks-helper/map.jpg").default,
 ]
 
-const HyphenHacksHelperPage: React.FC = () => (
+const HyphenHacksHelperPage: React.FunctionComponent = () => (
   <ProjectPage id={"hyphen-hacks-helper"}>
     <ProjectImages images={SCREENSHOTS} alt={"HH Helper"} className={"rtl"}>
       <motion.p {...ItemProps}>

@@ -8,7 +8,7 @@ type ProjectImagesProps = React.PropsWithChildren<{
   className?: string
 }>;
 
-const ProjectImages: React.FC<ProjectImagesProps> = ({ images, alt, className = "", children }) => (
+const ProjectImages: React.FunctionComponent<ProjectImagesProps> = ({ images, alt, className = "", children }) => (
   <div className={"screenshots " + className}>
     {images.map((src, i) => (
       <motion.img {...ItemProps} src={src} key={src} alt={`${alt} ${i}`} />

@@ -10,7 +10,7 @@ const SCREENSHOTS = [
   require("../assets/images/project-screenshots/missfits-website/contact.jpg").default
 ];
 
-const MissfitsPage: React.FC = () => (
+const MissfitsPage: React.FunctionComponent = () => (
   <ProjectPage id={"missfits-website"}>
     <ProjectImages images={SCREENSHOTS} alt={"Missfits Website"} className={"rtl"}>
       <motion.p {...ItemProps}>

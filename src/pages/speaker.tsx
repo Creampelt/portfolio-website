@@ -16,7 +16,7 @@ const PROCESS_SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/speaker/pcbs.jpg").default
 ]
 
-const SpeakerPage: React.FC = () => (
+const SpeakerPage: React.FunctionComponent = () => (
   <ProjectPage id={"speaker"}>
     <ProjectImages images={FINAL_SCREENSHOTS} alt={"Speaker"} className={"fixed-layout"} />
     <motion.div {...BackgroundProps} className={"problem-solution accent"}>

@@ -9,7 +9,7 @@ const SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/chair/folded.jpg").default
 ];
 
-const Chair: React.FC = () => (
+const Chair: React.FunctionComponent = () => (
   <ProjectPage id={"chair"}>
     <ProjectImages images={SCREENSHOTS} alt={"Chair"} className={"fixed-layout"} />
     <motion.div className={"problem-solution accent"} {...BackgroundProps}>

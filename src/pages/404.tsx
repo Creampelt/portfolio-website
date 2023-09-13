@@ -5,7 +5,7 @@ import { ItemProps, ContainerProps } from "../constants/AnimateProps";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import "../stylesheets/404.scss";
 
-const NotFoundPage: React.FC = () => (
+const NotFoundPage: React.FunctionComponent = () => (
   <motion.main {...ContainerProps} id={"not-found"}>
     <motion.title {...ItemProps}>Page Not Found</motion.title>
     <motion.h1 {...ItemProps}>404</motion.h1>

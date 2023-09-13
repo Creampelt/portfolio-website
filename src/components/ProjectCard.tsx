@@ -5,7 +5,7 @@ import { BackgroundProps } from "../constants/AnimateProps";
 
 type ProjectCardProps = Project;
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, description, type, image, incomplete }) => {
+const ProjectCard: React.FunctionComponent<ProjectCardProps> = ({ id, title, description, type, image, incomplete }) => {
   const [showCol1, setShowCol1] = React.useState(false);
   const [showCol2, setShowCol2] = React.useState(false);
   const cardRef = React.useRef<HTMLDivElement>(null);

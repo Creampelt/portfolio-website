@@ -11,7 +11,11 @@ interface Project {
   type: string,
   buttons?: AccessTypes,
   hidden: boolean,
-  incomplete: boolean
+  incomplete: boolean,
+  logIn?: {
+    username: string,
+    password: string,
+  }
 }
 
 interface SubNavLink {

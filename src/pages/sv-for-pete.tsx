@@ -10,7 +10,7 @@ const SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/sv-for-pete/pete_bottom.jpg").default
 ];
 
-const SVForPetePage: React.FC = () => (
+const SVForPetePage: React.FunctionComponent = () => (
   <ProjectPage id={"sv-for-pete"}>
     <ProjectImages images={SCREENSHOTS} alt={"SV for Pete"} className={"rtl"}>
       <motion.p {...ItemProps}>

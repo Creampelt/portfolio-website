@@ -1,15 +1,40 @@
 const Projects: Project[] = [
   {
-    id: "gamepeople-emulator",
-    title: "Gamepeople Emulator",
-    description: "A Gameboy emulator",
-    image: require("../assets/images/under-construction.png").default,
-    type: "Emulator",
+    id: "org-assistant",
+    title: "Org Assistant",
+    description: "A custom-built event manager that can consolidate attendees, link events and check-ins between " +
+      "orgs, restrict attendees based on various criteria, and more",
+    image: [
+      require("../assets/images/project-screenshots/org-assistant/home-page.png").default,
+      require("../assets/images/project-screenshots/org-assistant/event-page.png").default,
+    ],
+    type: "Web App",
     buttons: {
-      github: "https://github.com/Creampelt/gamepeople-emulator"
+      web: "https://org-assistant.web.app",
+      github: "https://github.com/coleweinman/Org-Assistant",
+    },
+    logIn: {
+      username: "test@example.com",
+      password: "12345678",
     },
     hidden: false,
-    incomplete: true
+    incomplete: false,
+  },
+  {
+    id: "qpp-website",
+    title: "Q++ Website",
+    description: "Website for Q++, org for LGBT people in CS at UT Austin",
+    image: [
+      require("../assets/images/project-screenshots/qpp-website/home.png").default,
+      require("../assets/images/project-screenshots/qpp-website/get-involved.png").default,
+    ],
+    type: "Website",
+    buttons: {
+      web: "https://texasqpp.com",
+      github: "https://github.com/Creampelt/qpp-website",
+    },
+    hidden: false,
+    incomplete: false,
   },
   {
     id: "simple-subs",
@@ -21,10 +46,10 @@ const Projects: Project[] = [
       ios: "https://apps.apple.com/us/app/simplesubs/id1464274843",
       android: "https://play.google.com/store/apps/details?id=org.lwhs.simplesubs",
       web: "https://simple-subs-app.web.app",
-      github: "https://github.com/SimpleSubs/mobile-app"
+      github: "https://github.com/SimpleSubs/mobile-app",
     },
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "simple-subs-console",
@@ -34,10 +59,10 @@ const Projects: Project[] = [
     type: "Web App",
     buttons: {
       web: "https://simple-subs.web.app",
-      github: "https://github.com/SimpleSubs/admin-console"
+      github: "https://github.com/SimpleSubs/admin-console",
     },
     hidden: true,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "simple-subs-printer",
@@ -46,10 +71,10 @@ const Projects: Project[] = [
     image: [],
     type: "Command-line",
     buttons: {
-      github: "https://github.com/SimpleSubs/automatic-printer"
+      github: "https://github.com/SimpleSubs/automatic-printer",
     },
     hidden: true,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "hyphen-hacks-helper",
@@ -60,10 +85,10 @@ const Projects: Project[] = [
     buttons: {
       ios: "https://apps.apple.com/us/app/hyphen-hacks-helper/id1483173457",
       android: "https://play.google.com/store/apps/details?id=com.hyphenhacks.main",
-      github: "https://github.com/hyphen-hacks/hyphen-hacks-mobile"
+      github: "https://github.com/hyphen-hacks/hyphen-hacks-mobile",
     },
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "sv-for-pete",
@@ -71,14 +96,14 @@ const Projects: Project[] = [
     description: "Website for grassroots campaign organization Silicon Valley for Pete",
     image: [
       require("../assets/images/project-screenshots/sv-for-pete/pete_home.jpg").default,
-      require("../assets/images/project-screenshots/sv-for-pete/pete_sign_up.jpg").default
+      require("../assets/images/project-screenshots/sv-for-pete/pete_sign_up.jpg").default,
     ],
     type: "Website",
     buttons: {
-      github: "https://github.com/Creampelt/pete-website"
+      github: "https://github.com/Creampelt/pete-website",
     },
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "missfits-website",
@@ -86,15 +111,15 @@ const Projects: Project[] = [
     description: "Team website for FIRST Robotics Competition Team 6418: The Missfits",
     image: [
       require("../assets/images/project-screenshots/missfits-website/home.jpg").default,
-      require("../assets/images/project-screenshots/missfits-website/outreach.jpg").default
+      require("../assets/images/project-screenshots/missfits-website/outreach.jpg").default,
     ],
     type: "Website",
     buttons: {
       web: "https://team6418.org",
-      github: "https://github.com/Creampelt/missfits-website"
+      github: "https://github.com/Creampelt/missfits-website",
     },
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "tuner-cli",
@@ -102,14 +127,14 @@ const Projects: Project[] = [
     description: "Command-line interface to calculate the pitch, frequency, and intonation of .wav files",
     image: [
       require("../assets/images/project-screenshots/tuner-cli/tuner--help.jpg").default,
-      require("../assets/images/project-screenshots/tuner-cli/a441.png").default
+      require("../assets/images/project-screenshots/tuner-cli/a441.png").default,
     ],
     type: "Command-line",
     buttons: {
-      github: "https://github.com/Creampelt/tuner-cli"
+      github: "https://github.com/Creampelt/tuner-cli",
     },
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "lamp",
@@ -118,7 +143,7 @@ const Projects: Project[] = [
     image: require("../assets/images/project-screenshots/lamp/final-model.jpg").default,
     type: "Tech Arts",
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "chair",
@@ -127,7 +152,7 @@ const Projects: Project[] = [
     image: require("../assets/images/project-screenshots/chair/unfolded.jpg").default,
     type: "Tech Arts",
     hidden: false,
-    incomplete: false
+    incomplete: false,
   },
   {
     id: "speaker",
@@ -136,11 +161,11 @@ const Projects: Project[] = [
     image: require("../assets/images/project-screenshots/speaker/full-shot.jpg").default,
     type: "Tech Arts",
     buttons: {
-      github: "https://gist.github.com/Creampelt/1b61be5f5196f39ff682ea6d3a81968d"
+      github: "https://gist.github.com/Creampelt/1b61be5f5196f39ff682ea6d3a81968d",
     },
     hidden: false,
-    incomplete: false
-  }
+    incomplete: false,
+  },
 ];
 
 export default Projects;

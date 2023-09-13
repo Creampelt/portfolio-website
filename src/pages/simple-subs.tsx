@@ -29,7 +29,7 @@ const PRINTER_SCREENSHOTS: string[] = [
   require("../assets/images/simple-subs/simple-subs-printer/order-label.jpg").default
 ];
 
-const SimpleSubsPage: React.FC = () => (
+const SimpleSubsPage: React.FunctionComponent = () => (
   <>
     <ProjectPage id={"simple-subs"}>
       <ProjectImages images={ORDER_SCREENSHOTS} alt={"SimpleSubs"} className={"arranged"} />

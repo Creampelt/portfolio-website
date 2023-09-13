@@ -9,7 +9,7 @@ const SCREENSHOTS = [
   require("../assets/images/project-screenshots/lamp/final-model.jpg").default
 ];
 
-const Lamp: React.FC = () => (
+const Lamp: React.FunctionComponent = () => (
   <ProjectPage id={"lamp"}>
     <ProjectImages images={SCREENSHOTS} alt={"Lamp"} className={"fixed-layout"} />
     <motion.div {...BackgroundProps} className={"problem-solution accent"}>

@@ -9,7 +9,7 @@ type DownloadButtonsProps = {
   buttons: AccessTypes
 };
 
-const DownloadButtons: React.FC<DownloadButtonsProps> = ({ buttons }) => (
+const DownloadButtons: React.FunctionComponent<DownloadButtonsProps> = ({ buttons }) => (
   <motion.div {...ItemProps} className={"download-buttons"}>
     {buttons.ios && (
       <a className={"ios"} href={buttons.ios} target={"_blank"}>

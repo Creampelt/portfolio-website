@@ -10,7 +10,7 @@ const SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/tuner-cli/tuner-functionality.jpg").default
 ];
 
-const TunerCLIPage: React.FC = () => (
+const TunerCLIPage: React.FunctionComponent = () => (
   <ProjectPage id={"tuner-cli"}>
     <ProjectImages images={SCREENSHOTS} alt={"Tuner CLI"} />
     <motion.div {...BackgroundProps} className={"problem-solution accent"}>
