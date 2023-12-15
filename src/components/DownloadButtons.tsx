@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import DownloadIOS from "../assets/images/download-icons/download-ios.svg";
 import downloadPlayStore from "../assets/images/download-icons/download-android.png";
 import { ItemProps } from "../constants/AnimateProps";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaFileContract } from "react-icons/fa";
 
 type DownloadButtonsProps = {
   buttons: AccessTypes
@@ -31,6 +31,12 @@ const DownloadButtons: React.FunctionComponent<DownloadButtonsProps> = ({ button
       <a className={"github text"} href={buttons.github} target={"_blank"}>
         <FaGithub className={"github-icon"} />
         View code
+      </a>
+    )}
+    {buttons.report && (
+      <a className={"github text"} href={buttons.report} target={"_blank"}>
+        <FaFileContract className={"github-icon"} />
+        View report
       </a>
     )}
   </motion.div>
