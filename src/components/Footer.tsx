@@ -29,9 +29,9 @@ const Footer: React.FunctionComponent<FooterProps> = ({ path }) => {
     ));
     return index === -1 ? {} : {
       next: index + 1 < FilteredProjects.length ? FilteredProjects[index + 1] : undefined,
-      prev: index > 0 ? FilteredProjects[index - 1] : undefined
+      prev: index > 0 ? FilteredProjects[index - 1] : undefined,
     };
-  }
+  };
 
   React.useEffect(() => {
     setNeighbors(getNextAndPrev(path));
@@ -39,7 +39,9 @@ const Footer: React.FunctionComponent<FooterProps> = ({ path }) => {
 
   return (
     <footer>
-      {(prev || next) && (
+      {(
+        prev || next
+      ) && (
         <div className={"next-prev-buttons"}>
           <div className={"prev"}>
             {prev && (
@@ -60,7 +62,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({ path }) => {
         </div>
       )}
       <div className={"links"}>
-        <a target={"_blank"} href={"mailto:emily@sturman.org"}>
+        <a target={"_blank"} href={"mailto:sturman@utexas.edu"}>
           <span>sturman@utexas.edu</span>
           <FaEnvelope className={"link-icon"} />
         </a>
@@ -76,7 +78,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({ path }) => {
         </a>
       </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;

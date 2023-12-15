@@ -14,14 +14,14 @@ const IndexPage: React.FunctionComponent = () => (
     <header>
       <div className={"title main-title"}>
         <h1>
-          <motion.span {...ItemProps}>Emily</motion.span>
+          <motion.span {...ItemProps}>Emily&nbsp;</motion.span>
           <motion.span {...ItemProps}>Sturman</motion.span>
         </h1>
       </div>
       <p className={"subtitle"}>
-        <motion.span {...ItemProps}>full-stack developer</motion.span>
-        &bull;
         <motion.span {...ItemProps}>robotics enthusiast</motion.span>
+        &bull;
+        <motion.span {...ItemProps}>full-stack developer</motion.span>
         &bull;
         <motion.span {...ItemProps}>occasional tinkerer</motion.span>
       </p>

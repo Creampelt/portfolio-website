@@ -33,5 +33,6 @@ interface AccessTypes {
   ios?: string,
   android?: string,
   web?: string,
-  github?: string
+  github?: string,
+  report?: string,
 }

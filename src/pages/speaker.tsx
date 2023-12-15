@@ -7,14 +7,14 @@ import { BackgroundProps, ItemProps } from "../constants/AnimateProps";
 const FINAL_SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/speaker/full-shot.jpg").default,
   require("../assets/images/project-screenshots/speaker/top.jpg").default,
-  require("../assets/images/project-screenshots/speaker/detail.jpg").default
+  require("../assets/images/project-screenshots/speaker/detail.jpg").default,
 ];
 
 const PROCESS_SCREENSHOTS: string[] = [
   require("../assets/images/project-screenshots/speaker/drawing.jpeg").default,
   require("../assets/images/project-screenshots/speaker/rhino.png").default,
-  require("../assets/images/project-screenshots/speaker/pcbs.jpg").default
-]
+  require("../assets/images/project-screenshots/speaker/pcbs.jpg").default,
+];
 
 const SpeakerPage: React.FunctionComponent = () => (
   <ProjectPage id={"speaker"}>
@@ -37,9 +37,14 @@ const SpeakerPage: React.FunctionComponent = () => (
         of the LEDs change based on the frequency of the music, and the number of illuminated LEDs change based on the
         volume. Therefore, different songs and genres display different patterns on the speaker.
       </motion.p>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/uxe4buU6ngE" frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen/>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/uxe4buU6ngE"
+        style={{ border: "none" }}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
     </motion.div>
   </ProjectPage>
 );
