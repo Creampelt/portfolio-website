@@ -1,6 +1,6 @@
-import {PageType, type StaticPageInfo, type WindowContextInfo} from "../types";
+import { PageType, type StaticPageInfo, type WindowSpawnInfo } from "../types";
 
-export const DEFAULT_WINDOWS: WindowContextInfo[] = [{slug: "home", spawningPos: null}];
+export const DEFAULT_WINDOWS: WindowSpawnInfo[] = [{ slug: "home", spawningPos: null }];
 
 export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
   home: {
@@ -14,3 +14,5 @@ export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
     type: PageType.PROJECT_BROWSER,
   },
 };
+
+export const WINDOW_OFFSET = 20;

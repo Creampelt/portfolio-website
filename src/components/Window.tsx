@@ -1,8 +1,8 @@
 import * as React from "react";
-import {WindowsManagerContext} from "../constants/contexts";
-import {clamp} from "../constants/helpers";
-import type {Dimension, Position} from "../types";
-
+import { WindowContext, WindowsManagerContext } from "../constants/contexts";
+import { clamp } from "../constants/helpers";
+import { WINDOW_OFFSET } from "../constants/staticConstants";
+import type { Position } from "../types";
 
 type WindowProps = React.PropsWithChildren<{
   slug: string;
@@ -12,15 +12,16 @@ type WindowProps = React.PropsWithChildren<{
   onDragStart: () => void;
 }>;
 
-const Window: React.FC<WindowProps> = ({slug, title, index, spawningPos, onDragStart, children}) => {
-  const {removeWindow} = React.useContext(WindowsManagerContext);
+const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, onDragStart, children }) => {
+  const { removeWindow } = React.useContext(WindowsManagerContext);
   const [dragging, setDragging] = React.useState<boolean>(false);
   const [posToMouse, setPosToMouse] = React.useState<Position | null>(null);
   const [pos, setPos] = React.useState<Position | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(true);
-  const [dims, setDims] = React.useState<Dimension>({width: 600, height: 400});
+  const [minHeight, setMinHeight] = React.useState<number>(0);
 
   const windowRef = React.useRef<HTMLDivElement>(null);
+  const titleBarRef = React.useRef<HTMLDivElement>(null);
   const isDragging = React.useRef<boolean>(false);
 
   const onMouseDown: React.MouseEventHandler = (e) => {
@@ -52,7 +53,7 @@ const Window: React.FC<WindowProps> = ({slug, title, index, spawningPos, onDragS
     if (!isDragging.current || !posToMouse || !windowRef.current) {
       return;
     }
-    const {width, height} = windowRef.current.getBoundingClientRect();
+    const { width, height } = windowRef.current.getBoundingClientRect();
     setPos(
       {
         x: clamp(e.pageX - posToMouse.x, 0, window.innerWidth - width),
@@ -68,10 +69,17 @@ const Window: React.FC<WindowProps> = ({slug, title, index, spawningPos, onDragS
   const minimize = () => setShowContent(!showContent);
 
   React.useEffect(() => {
+    if (!titleBarRef.current) {
+      return;
+    }
+    setMinHeight(titleBarRef.current.getBoundingClientRect().height);
+  }, [titleBarRef.current]);
+
+  React.useEffect(() => {
     if (!windowRef.current || pos) {
       return;
     }
-    const {width, height} = windowRef.current.getBoundingClientRect();
+    const { width, height } = windowRef.current.getBoundingClientRect();
     if (!spawningPos) {
       setPos({
         x: (
@@ -86,14 +94,14 @@ const Window: React.FC<WindowProps> = ({slug, title, index, spawningPos, onDragS
       const maxY = window.innerHeight - height;
       setPos({
         x: (
-          spawningPos.x + 10
+          spawningPos.x + WINDOW_OFFSET
         ) % maxX,
         y: (
-          spawningPos.y + 10
+          spawningPos.y + WINDOW_OFFSET
         ) % maxY,
       });
     }
-  }, [spawningPos]);
+  }, [spawningPos, windowRef.current]);
 
   React.useEffect(() => {
     if (dragging && !isDragging.current) {
@@ -112,36 +120,44 @@ const Window: React.FC<WindowProps> = ({slug, title, index, spawningPos, onDragS
   }, [dragging]);
 
   return (
-    <div
-      className="window"
-      ref={windowRef}
-      style={{
-        ...(
-          pos ? {left: pos.x, top: pos.y} : {visibility: "hidden"}
-        ), zIndex: index, width: dims.width,
-      }}
-    >
-      <div className={`title-bar ${dragging ? "dragging" : ""}`} onMouseDown={onMouseDown}>
-        <div className="buttons">
-          <button className="quit" onClick={close}>x</button>
-          <button className="quit" onClick={minimize}>_</button>
+    <WindowContext.Provider value={{ slug, pos }}>
+      <div
+        className={`window ${!showContent ? "minimized" : "expanded"}`}
+        ref={windowRef}
+        style={{
+          ...(
+            pos ? { left: pos.x, top: pos.y } : { visibility: "hidden" }
+          ), zIndex: index, ...(
+            !showContent ? { height: minHeight } : {}
+          ),
+        }}
+      >
+        <div
+          className={`title-bar ${dragging ? "dragging" : ""}`}
+          ref={titleBarRef}
+          onMouseDown={onMouseDown}
+        >
+          <div className="buttons">
+            <button className="quit" onClick={close}>x</button>
+            <button className="quit" onClick={minimize}>_</button>
+          </div>
+          <div className="bar-decoration">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="title">
+            <h1>{title}</h1>
+          </div>
         </div>
-        <div className="bar-decoration">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="title">
-          <h1>{title}</h1>
-        </div>
+        {showContent && (
+          <div className="content">
+            {children}
+          </div>
+        )}
       </div>
-      {showContent && (
-        <div className="content" style={{height: dims.height}}>
-          {children}
-        </div>
-      )}
-    </div>
+    </WindowContext.Provider>
   );
 };
 

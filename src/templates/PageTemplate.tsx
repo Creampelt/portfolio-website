@@ -1,14 +1,14 @@
 import * as React from "react";
 import Home from "../content/main/home";
 import Projects from "../content/main/projects";
-import ProjectTemplate from "../templates/ProjectTemplate";
-import {type PageInfo, PageType} from "../types";
+import { type PageInfo, PageType } from "../types";
+import ProjectTemplate from "./ProjectTemplate";
 
-type PageRendererProps = {
+type PageTemplateProps = {
   pageInfo: PageInfo;
 }
 
-const PageRenderer: React.FC<PageRendererProps> = ({pageInfo}) => {
+const PageTemplate: React.FC<PageTemplateProps> = ({ pageInfo }) => {
   switch (pageInfo.type) {
     case PageType.HOME:
       return <Home />;
@@ -21,4 +21,4 @@ const PageRenderer: React.FC<PageRendererProps> = ({pageInfo}) => {
   }
 };
 
-export default PageRenderer;
+export default PageTemplate;

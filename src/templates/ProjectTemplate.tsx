@@ -1,12 +1,12 @@
-import {graphql, useStaticQuery} from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
-import {getReportUrl} from "../constants/helpers";
-import type {ProjectPageInfo} from "../types";
+import { getReportUrl } from "../constants/helpers";
 import "../stylesheets/projects.scss";
+import type { ProjectPageInfo } from "../types";
 
 type ProjectTemplateProps = Omit<ProjectPageInfo, "slug">;
 
-const ProjectTemplate: React.FC<ProjectTemplateProps> = ({title, description, github, report, html}) => {
+const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ title, description, github, report, html }) => {
   const query = useStaticQuery<Queries.DownloadLinksQuery>(graphql`
     query DownloadLinks {
       allFile(filter: {absolutePath: {glob: "**/downloads/*"}}) {
@@ -28,7 +28,7 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({title, description, gi
         {github && <a href={github} target="__blank">github</a>}
         {reportUrl && <a href={reportUrl} target="__blank">report</a>}
       </div>
-      <span dangerouslySetInnerHTML={{__html: html}} />
+      <span dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };

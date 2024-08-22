@@ -53,12 +53,18 @@ export type Position = {
   y: number;
 };
 
-export type WindowContextInfo = {
+export type WindowSpawnInfo = {
   slug: string;
   spawningPos: Position | null;
-}
+};
 
 export type WindowInfo = {
   slug: string;
   pos: Position | null;
-}
+};
+
+export type ButtonInfo = {
+  id: string;
+  icon: string;
+  text: string;
+};

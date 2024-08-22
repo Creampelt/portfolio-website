@@ -40,6 +40,18 @@ html, body {
   flex-direction: column;
   border: constants.$border;
   box-shadow: 7px 7px 0 #0005;
+  overflow: auto;
+  height: 450px;
+  width: 600px;
+
+  &.expanded {
+    resize: both;
+  }
+
+  &.minimized {
+    resize: horizontal;
+  }
+
 
   .title-bar {
     width: 100%;
@@ -93,12 +105,12 @@ html, body {
   & > .content {
     margin: 0 5px 5px 5px;
     border: constants.$border;
-    min-height: 350px;
     display: flex;
     overflow-y: scroll;
     scrollbar-width: auto;
     scrollbar-gutter: stable;
     scrollbar-color: gray lightgray;
+    height: 100%;
 
     .markdown-content {
       height: 100%;
@@ -123,5 +135,37 @@ html, body {
         width: 100%;
       }
     }
+  }
+}
+
+.folder-button {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: center;
+  padding: 0;
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+
+  img {
+    width: 70px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    font-family: constants.$title-font;
+    box-decoration-break: clone;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  &.active span {
+    background-color: constants.$highlight-color;
+    color: constants.$background-color;
+  }
+
+  &:hover {
+    background-color: transparent;
   }
 }
