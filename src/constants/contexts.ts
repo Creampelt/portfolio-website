@@ -1,6 +1,5 @@
 import * as React from "react";
-import type { Position, WindowInfo, WindowSpawnInfo } from "../types";
-import { DEFAULT_WINDOWS } from "./staticConstants";
+import type {Position, WindowInfo, WindowSpawnInfo} from "../types";
 
 export type WindowsManagerContextType = {
   windows: WindowSpawnInfo[];
@@ -11,7 +10,7 @@ export type WindowsManagerContextType = {
 export type WindowContextType = WindowInfo;
 
 export const WindowsManagerContext = React.createContext<WindowsManagerContextType>({
-  windows: DEFAULT_WINDOWS,
+  windows: [],
   addWindow: () => {},
   removeWindow: () => {},
 });

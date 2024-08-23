@@ -1,5 +1,6 @@
 import * as React from "react";
-import type { ButtonInfo } from "../types";
+import {v4 as uuid} from "uuid";
+import type {ButtonInfo} from "../types";
 
 type FolderButtonsProps = {
   onClick: (id: string) => void;
@@ -7,33 +8,31 @@ type FolderButtonsProps = {
   className?: string;
 };
 
-const FolderButtons: React.FC<FolderButtonsProps> = ({ onClick, buttons, className = "" }) => {
+const FolderButtons: React.FC<FolderButtonsProps> = ({onClick, buttons, className = ""}) => {
+  const containerId = React.useMemo(() => uuid(), []);
   const [active, setActive] = React.useState<string | null>(null);
-  const [isHovering, setHovering] = React.useState<boolean>(false);
 
-  const clearActive = () => {
-    if (!isHovering) {
+  const clearActive = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target.classList.contains(containerId)) {
       setActive(null);
     }
   };
 
   React.useEffect(() => {
-    window.addEventListener("mousedown", clearActive);
-    return () => window.removeEventListener("mousedown", clearActive);
+    window.addEventListener("click", clearActive);
+    return () => window.removeEventListener("click", clearActive);
   }, []);
 
-  console.log(isHovering);
-
-  return buttons.map(({ id, icon, text }) => (
+  return buttons.map(({id, icon, text}) => (
     <button
-      className={`folder-button ${active === id ? "active" : ""} ${className}`}
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-      onMouseDown={() => setActive(id)}
+      className={`${containerId} folder-button ${active === id ? "active" : ""} ${className}`}
+      onClick={() => setActive(id)}
       onDoubleClick={() => onClick(id)}
+      key={id}
     >
-      <img src={icon} alt={text} />
-      <div><span>{text}</span></div>
+      <img className={containerId} src={icon} alt={text} />
+      <div className={containerId}><span className={id}>{text}</span></div>
     </button>
   ));
 };

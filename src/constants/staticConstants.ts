@@ -1,6 +1,4 @@
-import { PageType, type StaticPageInfo, type WindowSpawnInfo } from "../types";
-
-export const DEFAULT_WINDOWS: WindowSpawnInfo[] = [{ slug: "home", spawningPos: null }];
+import {PageType, type StaticPageInfo} from "../types";
 
 export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
   home: {
@@ -16,3 +14,7 @@ export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
 };
 
 export const WINDOW_OFFSET = 20;
+
+export const INHERITANCE: { [key: PageType]: PageType | null } = {
+  // PageType.HOME:
+};

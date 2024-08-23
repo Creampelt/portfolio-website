@@ -43,11 +43,6 @@ export type ProjectPageInfo = PageInfoFields & {
 
 export type PageInfo = StaticPageInfo | ProjectPageInfo;
 
-export type Dimension = {
-  width: number;
-  height: number;
-};
-
 export type Position = {
   x: number;
   y: number;
