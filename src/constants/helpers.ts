@@ -1,8 +1,8 @@
-import type { PageInfo, ProjectPageInfo } from "../types";
+import type { PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
 import { PageType } from "../types";
 import { STATIC_PAGES } from "./staticConstants";
 
-export function getPages(query: Queries.AllPagesQuery): { [slug: string]: PageInfo | ProjectPageInfo } {
+export function getPages(query: Queries.AllPagesQuery): { [slug: string]: PageInfo } {
   const pages: { [slug: string]: PageInfo } = {};
   for (const { node } of query.allMarkdownRemark.edges) {
     pages[node.frontmatter!.slug!] =
@@ -13,6 +13,17 @@ export function getPages(query: Queries.AllPagesQuery): { [slug: string]: PageIn
       } as ProjectPageInfo;
   }
   return { ...STATIC_PAGES, ...pages };
+}
+
+export function getPagesByType(pages: PageInfo[]): PageByTypeIndex {
+  const pagesByType: Partial<PageByTypeIndex> = {};
+  for (const page of pages) {
+    if (!pagesByType[page.type]) {
+      pagesByType[page.type] = [];
+    }
+    pagesByType[page.type]!.push(page);
+  }
+  return pagesByType as PageByTypeIndex;
 }
 
 export function clamp(x: number, min: number, max: number): number {

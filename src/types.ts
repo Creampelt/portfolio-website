@@ -22,6 +22,7 @@ export enum PageType {
   HOME = "home",
   PROJECT_BROWSER = "projectBrowser",
   PROJECT = "project",
+  DIRECTORY = "directory",
 }
 
 type PageInfoFields = {
@@ -30,7 +31,7 @@ type PageInfoFields = {
 };
 
 export type StaticPageInfo = PageInfoFields & {
-  type: PageType.HOME | PageType.PROJECT_BROWSER;
+  type: PageType.HOME | PageType.PROJECT_BROWSER | PageType.DIRECTORY;
 };
 
 export type ProjectPageInfo = PageInfoFields & {
@@ -62,4 +63,12 @@ export type ButtonInfo = {
   id: string;
   icon: string;
   text: string;
+};
+
+export type InheritanceTree = null | {
+  [key in PageType]?: InheritanceTree
+};
+
+export type PageByTypeIndex = {
+  [type in PageType]: PageInfo[];
 };

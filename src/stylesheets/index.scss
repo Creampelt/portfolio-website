@@ -163,7 +163,7 @@ html, body {
     border-radius: 5px;
   }
 
-  &.active span {
+  &:focus span {
     background-color: constants.$highlight-color;
     color: constants.$background-color;
   }

@@ -1,13 +1,13 @@
-import {graphql, useStaticQuery} from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
 import folder from "../assets/icons/Folder.png";
-import {WindowsManagerContext} from "../constants/contexts";
-import {getPages} from "../constants/helpers";
+import { WindowsManagerContext } from "../constants/contexts";
+import { getPages, getPagesByType } from "../constants/helpers";
+import { STATIC_PAGES } from "../constants/staticConstants";
 import "../stylesheets/index.scss";
-import {STATIC_PAGES} from "../constants/staticConstants";
 import PageManager from "../templates/PageTemplate";
-import type {Position, WindowSpawnInfo} from "../types";
-import FolderButtons from "./FolderButtons";
+import type { Position, WindowSpawnInfo } from "../types";
+import FolderButton from "./FolderButton";
 import Window from "./Window";
 
 const WindowsManager: React.FC = () => {
@@ -30,12 +30,13 @@ const WindowsManager: React.FC = () => {
     }
   `);
   const pages = React.useMemo(() => getPages(query), [query]);
+  const pagesByType = React.useMemo(() => getPagesByType(Object.values(pages)), [pages]);
   const [windows, setWindows] = React.useState<WindowSpawnInfo[]>([]);
 
   const filterSlug = (slug: string) => windows.filter((winSlug) => winSlug.slug !== slug);
 
   const addWindow = (slug: string, currentPos: Position | null) => {
-    setWindows([...filterSlug(slug), {slug, spawningPos: currentPos}]);
+    setWindows([...filterSlug(slug), { slug, spawningPos: currentPos }]);
   };
 
   const removeWindow = (slug: string) => {
@@ -43,7 +44,7 @@ const WindowsManager: React.FC = () => {
   };
 
   const moveWindowToFront = (slug: string) => {
-    setWindows([...filterSlug(slug), {slug, spawningPos: null}]);
+    setWindows([...filterSlug(slug), { slug, spawningPos: null }]);
   };
 
   const openHome = () => {
@@ -51,10 +52,10 @@ const WindowsManager: React.FC = () => {
   };
 
   return (
-    <WindowsManagerContext.Provider value={{windows, addWindow, removeWindow}}>
+    <WindowsManagerContext.Provider value={{ windows, pageIndex: pagesByType, addWindow, removeWindow }}>
       <>
-        <FolderButtons onClick={openHome} buttons={[{id: "open-home", icon: folder, text: "Open me"}]} />
-        {windows.map(({slug, spawningPos}, i) => (
+        <FolderButton icon={folder} text="Open me" onClick={openHome} />
+        {windows.map(({ slug, spawningPos }, i) => (
           !pages[slug] ? null : (
             <Window
               key={slug}
@@ -62,7 +63,7 @@ const WindowsManager: React.FC = () => {
               title={pages[slug].title}
               index={i}
               spawningPos={spawningPos}
-              onDragStart={() => moveWindowToFront(slug)}
+              moveToFront={() => moveWindowToFront(slug)}
             >
               <PageManager pageInfo={pages[slug]} />
             </Window>

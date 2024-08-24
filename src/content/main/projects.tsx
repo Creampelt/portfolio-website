@@ -5,7 +5,7 @@ import browser from "../../assets/icons/Browser.png";
 import hardDisk from "../../assets/icons/HardDisk.png";
 import info from "../../assets/icons/MacInfoCenter.png";
 import scrapbook from "../../assets/icons/Scrap Book.png";
-import FolderButtons from "../../components/FolderButtons";
+import FolderButton from "../../components/FolderButton";
 import Navbar from "../../components/Navbar";
 import { WindowContext, WindowsManagerContext } from "../../constants/contexts";
 import "../../stylesheets/projects.scss";
@@ -53,15 +53,17 @@ const Projects: React.FC = () => {
   return (
     <div className="projects">
       <div className="content">
-        <FolderButtons
-          onClick={(slug: string) => addWindow(slug, pos)}
-          buttons={projects
-            .filter(({ types }) => !projectFilter || types.includes(projectFilter))
-            .map(({ slug, title }) => (
-              { id: slug, icon: hardDisk, text: title }
-            ))}
-          className="project-link"
-        />
+        {projects
+          .filter(({ types }) => !projectFilter || types.includes(projectFilter))
+          .map(({ slug, title }) => (
+            <FolderButton
+              key={slug}
+              icon={hardDisk}
+              text={title}
+              onClick={() => addWindow(slug, pos)}
+              className="project-link"
+            />
+          ))}
       </div>
       <Navbar keepActive links={NAV_LINKS} onNavigate={setFilter} />
     </div>

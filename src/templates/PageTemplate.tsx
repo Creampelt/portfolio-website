@@ -1,4 +1,5 @@
 import * as React from "react";
+import Directory from "../content/main/directory";
 import Home from "../content/main/home";
 import Projects from "../content/main/projects";
 import { type PageInfo, PageType } from "../types";
@@ -14,6 +15,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ pageInfo }) => {
       return <Home />;
     case PageType.PROJECT_BROWSER:
       return <Projects />;
+    case PageType.DIRECTORY:
+      return <Directory />;
     case PageType.PROJECT:
       return <ProjectTemplate {...pageInfo} />;
     default:

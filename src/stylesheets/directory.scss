@@ -1,0 +1,51 @@
+@use "constants";
+
+.directory {
+  .node-link {
+    text-decoration: none;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: constants.$font-color;
+
+    &:focus {
+      background-color: constants.$highlight-color;
+      color: constants.$background-color;
+    }
+  }
+}
+
+.root-level {
+  margin: 0;
+  padding: 0;
+
+  .root-node {
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
+
+    & > .tree-level {
+      border-left: none;
+    }
+  }
+}
+
+
+.tree-level {
+  border-left: 1px solid black;
+  padding: 10px 0 0 15px;
+
+  .tree-node {
+    list-style-type: none;
+    margin: 5px 0;
+
+    &::before {
+      content: "";
+      padding: 0 10px;
+      margin: 0 5px 0 0;
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+      bottom: 0.5em;
+      position: relative;
+    }
+  }
+}

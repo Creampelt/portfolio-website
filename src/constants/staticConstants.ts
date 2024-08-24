@@ -1,4 +1,4 @@
-import {PageType, type StaticPageInfo} from "../types";
+import { InheritanceTree, PageType, type StaticPageInfo } from "../types";
 
 export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
   home: {
@@ -11,10 +11,20 @@ export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
     title: "Projects",
     type: PageType.PROJECT_BROWSER,
   },
+  directory: {
+    slug: "directory",
+    title: "Directory",
+    type: PageType.DIRECTORY,
+  },
 };
 
 export const WINDOW_OFFSET = 20;
 
-export const INHERITANCE: { [key: PageType]: PageType | null } = {
-  // PageType.HOME:
+export const INHERITANCE: InheritanceTree = {
+  [PageType.HOME]: {
+    [PageType.PROJECT_BROWSER]: {
+      [PageType.PROJECT]: null,
+    },
+    [PageType.DIRECTORY]: null,
+  },
 };

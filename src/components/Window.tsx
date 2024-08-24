@@ -9,10 +9,10 @@ type WindowProps = React.PropsWithChildren<{
   title: string;
   index: number;
   spawningPos: Position | null;
-  onDragStart: () => void;
+  moveToFront: () => void;
 }>;
 
-const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, onDragStart, children }) => {
+const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, moveToFront, children }) => {
   const { removeWindow } = React.useContext(WindowsManagerContext);
   const [dragging, setDragging] = React.useState<boolean>(false);
   const [posToMouse, setPosToMouse] = React.useState<Position | null>(null);
@@ -37,7 +37,7 @@ const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, onDrag
         y: e.pageY - windowPos.top,
       },
     );
-    onDragStart();
+    moveToFront();
     e.stopPropagation();
     e.preventDefault();
   };
@@ -131,6 +131,7 @@ const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, onDrag
             !showContent ? { height: minHeight } : {}
           ),
         }}
+        onMouseDown={moveToFront}
       >
         <div
           className={`title-bar ${dragging ? "dragging" : ""}`}
