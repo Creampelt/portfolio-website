@@ -122,11 +122,10 @@ html, body {
         margin: 0 5px 10px;
       }
 
-      .gatsby-resp-image-wrapper {
-        position: relative;
-        top: 0;
-        left: -5px;
-        width: calc(100% + 10px);
+      figcaption {
+        text-align: center;
+        font-style: italic;
+        margin-top: 5px;
       }
 
       iframe {
@@ -134,8 +133,10 @@ html, body {
         aspect-ratio: auto;
       }
 
-      .gif {
+      img[src*=".gif"] {
         width: 100%;
+        max-height: 350px;
+        object-fit: contain;
       }
     }
   }

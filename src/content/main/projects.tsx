@@ -1,10 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
-import icon from "../../assets/icons/AppleTalk.png";
-import browser from "../../assets/icons/Browser.png";
-import hardDisk from "../../assets/icons/HardDisk.png";
-import info from "../../assets/icons/MacInfoCenter.png";
-import scrapbook from "../../assets/icons/Scrap Book.png";
+import icon from "../../assets/images/icons/AppleTalk.png";
+import browser from "../../assets/images/icons/Browser.png";
+import hardDisk from "../../assets/images/icons/HardDisk.png";
+import info from "../../assets/images/icons/MacInfoCenter.png";
+import scrapbook from "../../assets/images/icons/Scrap Book.png";
 import FolderButton from "../../components/FolderButton";
 import Navbar from "../../components/Navbar";
 import { WindowContext, WindowsManagerContext } from "../../constants/contexts";
@@ -26,7 +26,10 @@ const Projects: React.FC = () => {
   const data = useStaticQuery<Queries.ProjectListQuery>(
     graphql`
       query ProjectList {
-        allMarkdownRemark(filter: {fileAbsolutePath: {glob: "**/projects/*.md"}}) {
+        allMarkdownRemark(
+          filter: {fileAbsolutePath: {glob: "**/projects/*.md"}}
+          sort: {frontmatter: {date: DESC}}
+        ) {
           edges {
             node {
               frontmatter {
@@ -44,7 +47,7 @@ const Projects: React.FC = () => {
     { ...node.frontmatter }
   )).filter(({ title, slug, types }) => title && slug && types) as Project[];
 
-  const [projectFilter, setProjectFilter] = React.useState<ProjectType | null>(null);
+  const [projectFilter, setProjectFilter] = React.useState<ProjectType | null>(ProjectType.FAVORITE);
 
   const setFilter = (id: string) => {
     setProjectFilter(id.length === 0 ? null : id as ProjectType);
@@ -65,7 +68,7 @@ const Projects: React.FC = () => {
             />
           ))}
       </div>
-      <Navbar keepActive links={NAV_LINKS} onNavigate={setFilter} />
+      <Navbar keepActive initialActive={ProjectType.FAVORITE} links={NAV_LINKS} onNavigate={setFilter} />
     </div>
   );
 };

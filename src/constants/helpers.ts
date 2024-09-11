@@ -1,10 +1,18 @@
-import type { PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
+import type { MainPageInfo, PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
 import { PageType } from "../types";
 import { STATIC_PAGES } from "./staticConstants";
 
 export function getPages(query: Queries.AllPagesQuery): { [slug: string]: PageInfo } {
   const pages: { [slug: string]: PageInfo } = {};
-  for (const { node } of query.allMarkdownRemark.edges) {
+  for (const { node } of query.main.edges) {
+    pages[node.frontmatter!.slug!] =
+      {
+        ...node.frontmatter,
+        type: PageType.MAIN,
+        html: node.html,
+      } as MainPageInfo;
+  }
+  for (const { node } of query.projects.edges) {
     pages[node.frontmatter!.slug!] =
       {
         ...node.frontmatter,

@@ -25,6 +25,7 @@ export const INHERITANCE: InheritanceTree = {
     [PageType.PROJECT_BROWSER]: {
       [PageType.PROJECT]: null,
     },
+    [PageType.MAIN]: null,
     [PageType.DIRECTORY]: null,
   },
 };

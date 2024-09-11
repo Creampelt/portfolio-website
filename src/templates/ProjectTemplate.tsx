@@ -1,12 +1,23 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
+import documentIcon from "../assets/images/icons/document.png";
+import githubIcon from "../assets/images/icons/github.png";
+import linkIcon from "../assets/images/icons/link.png";
 import { getReportUrl } from "../constants/helpers";
 import "../stylesheets/projects.scss";
 import type { ProjectPageInfo } from "../types";
 
 type ProjectTemplateProps = Omit<ProjectPageInfo, "slug">;
 
-const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ title, description, github, report, html }) => {
+const ProjectTemplate: React.FC<ProjectTemplateProps> = ({
+  title,
+  description,
+  date,
+  github,
+  report,
+  website,
+  html,
+}) => {
   const query = useStaticQuery<Queries.DownloadLinksQuery>(graphql`
     query DownloadLinks {
       allFile(filter: {absolutePath: {glob: "**/downloads/*"}}) {
@@ -23,10 +34,12 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ title, description, g
   return (
     <div className="markdown-content project">
       <h1>{title}</h1>
-      <p>{description}</p>
+      <p>({date}) {description}</p>
       <div className="project-buttons">
-        {github && <a href={github} target="__blank">github</a>}
-        {reportUrl && <a href={reportUrl} target="__blank">report</a>}
+        {website && <a href={website} target="__blank"><img src={linkIcon} className="link-icon" alt="" />website</a>}
+        {github && <a href={github} target="__blank"><img src={githubIcon} className="link-icon" alt="" />github</a>}
+        {reportUrl &&
+          <a href={reportUrl} target="__blank"><img src={documentIcon} className="link-icon" alt="" />report</a>}
       </div>
       <span dangerouslySetInnerHTML={{ __html: html }} />
     </div>

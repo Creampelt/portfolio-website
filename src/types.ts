@@ -23,6 +23,7 @@ export enum PageType {
   PROJECT_BROWSER = "projectBrowser",
   PROJECT = "project",
   DIRECTORY = "directory",
+  MAIN = "main",
 }
 
 type PageInfoFields = {
@@ -34,15 +35,22 @@ export type StaticPageInfo = PageInfoFields & {
   type: PageType.HOME | PageType.PROJECT_BROWSER | PageType.DIRECTORY;
 };
 
+export type MainPageInfo = PageInfoFields & {
+  type: PageType.MAIN;
+  html: string;
+};
+
 export type ProjectPageInfo = PageInfoFields & {
   type: PageType.PROJECT;
   html: string;
   description: string;
+  date: string;
   github?: string;
   report?: string;
+  website?: string;
 };
 
-export type PageInfo = StaticPageInfo | ProjectPageInfo;
+export type PageInfo = StaticPageInfo | MainPageInfo | ProjectPageInfo;
 
 export type Position = {
   x: number;

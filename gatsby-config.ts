@@ -1,13 +1,13 @@
-import type {GatsbyConfig} from "gatsby";
+import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Portfolio Website`,
     siteUrl: `https://emily.sturman.org`,
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
+  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL
+  // IntelliSense. If you use VSCode you can also use the GraphQL plugin Learn more at:
+  // https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-sass",
@@ -69,9 +69,13 @@ const config: GatsbyConfig = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 590,
+              showCaptions: true,
+              wrapperStyle: "margin: 0;",
+              withWebp: true,
             },
           },
           "gatsby-remark-copy-linked-files",
+          "gatsby-remark-emoji",
         ],
       },
     },
