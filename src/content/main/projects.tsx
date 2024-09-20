@@ -1,10 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
-import icon from "../../assets/images/icons/AppleTalk.png";
-import browser from "../../assets/images/icons/Browser.png";
-import hardDisk from "../../assets/images/icons/HardDisk.png";
-import info from "../../assets/images/icons/MacInfoCenter.png";
-import scrapbook from "../../assets/images/icons/Scrap Book.png";
+import rainbowFolder from "../../assets/images/icons/blankRainbowF.png";
+import chip128 from "../../assets/images/icons/chip128Doc.png";
+import freetube from "../../assets/images/icons/ftuA.png";
+import keyDoc from "../../assets/images/icons/keyDoc.png";
+import hardDisk from "../../assets/images/icons/rainbowD1.png";
+import screw from "../../assets/images/icons/screwF.png";
+import sharing from "../../assets/images/icons/SharingA.png";
 import FolderButton from "../../components/FolderButton";
 import Navbar from "../../components/Navbar";
 import { WindowContext, WindowsManagerContext } from "../../constants/contexts";
@@ -12,12 +14,12 @@ import "../../stylesheets/projects.scss";
 import { NavLink, Project, ProjectType } from "../../types";
 
 const NAV_LINKS: NavLink[] = [
-  { title: "Favorites", slug: ProjectType.FAVORITE, icon: scrapbook },
-  { title: "Robotics", slug: ProjectType.ROBOTICS, icon },
-  { title: "Research", slug: ProjectType.RESEARCH, icon: info },
-  { title: "Web & Apps", slug: ProjectType.WEB, icon: browser },
-  { title: "Tech Arts", slug: ProjectType.TECH_ARTS, icon: browser },
-  { title: "All", slug: "", icon: browser },
+  { title: "Favorites", slug: ProjectType.FAVORITE, icon: keyDoc },
+  { title: "Robotics", slug: ProjectType.ROBOTICS, icon: chip128 },
+  { title: "Research", slug: ProjectType.RESEARCH, icon: sharing },
+  { title: "Web & Apps", slug: ProjectType.WEB, icon: freetube },
+  { title: "Tech Arts", slug: ProjectType.TECH_ARTS, icon: screw },
+  { title: "All", slug: "", icon: rainbowFolder },
 ];
 
 const Projects: React.FC = () => {

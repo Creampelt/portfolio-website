@@ -1,16 +1,16 @@
 import * as React from "react";
-import icon from "../assets/images/icons/AppleTalk.png";
 import browser from "../assets/images/icons/Browser.png";
 import info from "../assets/images/icons/MacInfoCenter.png";
-import scrapbook from "../assets/images/icons/Scrap Book.png";
+import music from "../assets/images/icons/musicF.png";
+import rainbowDs from "../assets/images/icons/rainbowDs.png";
 import Navbar from "../components/Navbar";
 import { WindowContext, WindowsManagerContext } from "../constants/contexts";
 import "../stylesheets/home.scss";
 import type { NavLink } from "../types";
 
 const NAV_LINKS: NavLink[] = [
-  { title: "Projects", slug: "projects", icon: scrapbook },
-  { title: "Playlists", slug: "playlists", icon },
+  { title: "Projects", slug: "projects", icon: rainbowDs },
+  { title: "Playlists", slug: "playlists", icon: music },
   { title: "About Me", slug: "about", icon: info },
   { title: "Directory", slug: "directory", icon: browser },
 ];
