@@ -60,6 +60,7 @@ export type Position = {
 export type WindowSpawnInfo = {
   slug: string;
   spawningPos: Position | null;
+  relativeToCenter: boolean;
 };
 
 export type WindowInfo = {

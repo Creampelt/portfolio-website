@@ -1,9 +1,13 @@
 .playlists {
   ul {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 20px !important;
 
     li {
       list-style: none;
+
+      &:before {
+        content: "" !important;
+      }
     }
   }
 }

@@ -9,10 +9,19 @@ type WindowProps = React.PropsWithChildren<{
   title: string;
   index: number;
   spawningPos: Position | null;
+  relativeToCenter: boolean;
   moveToFront: () => void;
 }>;
 
-const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, moveToFront, children }) => {
+const Window: React.FC<WindowProps> = ({
+  slug,
+  title,
+  index,
+  spawningPos,
+  relativeToCenter,
+  moveToFront,
+  children,
+}) => {
   const { removeWindow } = React.useContext(WindowsManagerContext);
   const [dragging, setDragging] = React.useState<boolean>(false);
   const [posToMouse, setPosToMouse] = React.useState<Position | null>(null);
@@ -92,12 +101,18 @@ const Window: React.FC<WindowProps> = ({ slug, title, index, spawningPos, moveTo
     } else {
       const maxX = window.innerWidth - width;
       const maxY = window.innerHeight - height;
+      const spawnX = relativeToCenter ? spawningPos.x + (
+        window.innerWidth - width
+      ) / 2 : spawningPos.x;
+      const spawnY = relativeToCenter ? spawningPos.y + (
+        window.innerHeight - height
+      ) / 2 : spawningPos.y;
       setPos({
         x: (
-          spawningPos.x + WINDOW_OFFSET
+          spawnX + WINDOW_OFFSET
         ) % maxX,
         y: (
-          spawningPos.y + WINDOW_OFFSET
+          spawnY + WINDOW_OFFSET
         ) % maxY,
       });
     }

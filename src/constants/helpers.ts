@@ -42,6 +42,6 @@ export function getReportUrl(query: Queries.DownloadLinksQuery, report?: string)
   if (!report) {
     return null;
   }
-  const allUrlNodes = query.allFile.edges.filter(({ node }) => node.relativePath === report);
+  const allUrlNodes = query.allFile.edges.filter(({ node }) => node.relativePath.replace("downloads/", "") === report);
   return allUrlNodes.length > 0 ? allUrlNodes[0].node.publicURL : null;
 }

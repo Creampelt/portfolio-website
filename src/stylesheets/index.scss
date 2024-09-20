@@ -138,6 +138,22 @@ html, body {
         max-height: 350px;
         object-fit: contain;
       }
+
+      ul {
+        padding-left: 5px;
+
+        li {
+          list-style: none;
+
+          &:before {
+            content: "> ";
+          }
+
+          ul {
+            padding-left: 15px;
+          }
+        }
+      }
     }
   }
 }

@@ -17,26 +17,10 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        "name": "images",
-        "path": "./src/assets/images/",
+        "name": "assets",
+        "path": `${__dirname}/src/assets/`,
       },
-      __key: "images",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        "name": "downloads",
-        "path": "./src/assets/downloads/",
-      },
-      __key: "downloads",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        "name": "icons",
-        "path": "./src/assets/icons/",
-      },
-      __key: "icons",
+      __key: "assets",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -44,6 +28,7 @@ const config: GatsbyConfig = {
         name: "content",
         path: "./src/content",
       },
+      __key: "content",
     },
     {
       resolve: "gatsby-source-filesystem",
