@@ -1,21 +1,10 @@
 import * as React from "react";
-import type { PageByTypeIndex, Position, WindowInfo, WindowSpawnInfo } from "../types";
-
-export type WindowsManagerContextType = {
-  windows: WindowSpawnInfo[];
-  pageIndex: PageByTypeIndex | null;
-  addWindow: (slug: string, pos: Position | null) => void;
-  removeWindow: (slug: string) => void;
-};
+import type { WindowInfo, WindowsManagerContextType } from "../types";
+import { DEFAULT_WINDOW_CONTEXT } from "./staticConstants";
 
 export type WindowContextType = WindowInfo;
 
-export const WindowsManagerContext = React.createContext<WindowsManagerContextType>({
-  windows: [],
-  pageIndex: null,
-  addWindow: () => {},
-  removeWindow: () => {},
-});
+export const WindowsManagerContext = React.createContext<WindowsManagerContextType>(DEFAULT_WINDOW_CONTEXT);
 
 export const WindowContext = React.createContext<WindowContextType>({
   slug: "",

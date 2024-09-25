@@ -1,0 +1,45 @@
+@use "constants";
+@use "index";
+
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background-color: constants.$desktop-color;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &:before {
+    content: "emily sturman emily sturman emily sturman emily sturman";
+    position: absolute;
+    font-family: constants.$title-font;
+    text-align: left;
+    font-size: constants.$desktop-font-size;
+    color: constants.$desktop-text-color;
+    font-weight: 1000;
+    line-height: 0.7em;
+    top: 0.1em;
+  }
+
+  .main-folder {
+    position: relative;
+  }
+
+  .important-links {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+
+    a {
+      @extend .link-button;
+      background-color: constants.$background-color;
+
+      &:hover {
+        background-color: constants.$hover-color;
+      }
+    }
+  }
+}

@@ -1,17 +1,13 @@
+import { PageProps } from "gatsby";
 import * as React from "react";
-import {HeadFC, PageProps} from "gatsby";
-import WindowsManager from "../components/WindowsManager";
+import Desktop from "../components/Desktop";
 import "../stylesheets/index.scss";
+import WindowsManager from "../components/WindowsManager";
 
-
-const IndexPage: React.FC<PageProps> = () => {
-  return (
-    <main className="index">
-      <WindowsManager />
-    </main>
-  );
-};
+const IndexPage: React.FC<PageProps> = () => (
+  <WindowsManager>
+    <Desktop />
+  </WindowsManager>
+);
 
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>Home Page</title>;

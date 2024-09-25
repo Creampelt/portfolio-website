@@ -36,10 +36,10 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({
       <h1>{title}</h1>
       <p>({date}) {description}</p>
       <div className="project-buttons">
-        {website && <a href={website} target="__blank"><img src={linkIcon} className="link-icon" alt="" />website</a>}
-        {github && <a href={github} target="__blank"><img src={githubIcon} className="link-icon" alt="" />github</a>}
+        {website && <a href={website} target="_blank"><img src={linkIcon} alt="" />website</a>}
+        {github && <a href={github} target="_blank"><img src={githubIcon} alt="" />github</a>}
         {reportUrl &&
-          <a href={reportUrl} target="__blank"><img src={documentIcon} className="link-icon" alt="" />report</a>}
+          <a href={reportUrl} target="_blank"><img src={documentIcon} alt="" />report</a>}
       </div>
       <span dangerouslySetInnerHTML={{ __html: html }} />
     </div>

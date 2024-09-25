@@ -18,6 +18,13 @@ export const STATIC_PAGES: { [slug: string]: StaticPageInfo } = {
   },
 };
 
+export const DEFAULT_WINDOW_CONTEXT = {
+  windows: [],
+  pageIndex: null,
+  addWindow: () => {},
+  removeWindow: () => {},
+};
+
 export const WINDOW_OFFSET = 20;
 
 export const INHERITANCE: InheritanceTree = {

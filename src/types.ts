@@ -68,16 +68,17 @@ export type WindowInfo = {
   pos: Position | null;
 };
 
-export type ButtonInfo = {
-  id: string;
-  icon: string;
-  text: string;
-};
-
 export type InheritanceTree = null | {
   [key in PageType]?: InheritanceTree
 };
 
 export type PageByTypeIndex = {
   [type in PageType]: PageInfo[];
+};
+
+export type WindowsManagerContextType = {
+  windows: WindowSpawnInfo[];
+  pageIndex: PageByTypeIndex | null;
+  addWindow: (slug: string, pos: Position | null) => void;
+  removeWindow: (slug: string) => void;
 };
