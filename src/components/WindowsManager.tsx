@@ -107,8 +107,10 @@ const WindowsManager: React.FC<React.PropsWithChildren> = ({ children }) => {
     <WindowsManagerContext.Provider value={{ windows, pageIndex: pagesByType, addWindow, removeWindow }}>
       <>
         <title>
-          {!windows.length ? "" : (
-            pages[windows[windows.length - 1].slug].title + " \u2022 "
+          {(
+            !windows.length ? "" : (
+              pages[windows[windows.length - 1].slug].title + " \u2022 "
+            )
           ) + "Emily Sturman"}
         </title>
         {children}

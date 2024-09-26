@@ -139,7 +139,9 @@ const Window: React.FC<WindowProps> = ({
     return unsubscribe();
   }, [dragging]);
 
-  const posStyle = pos ? { left: !isMobile ? pos.x : 0, top: !isMobile ? pos.y : 0 } : { visibility: "hidden" };
+  const posStyle = pos
+    ? { left: !isMobile ? pos.x : 0, top: !isMobile ? pos.y : 0 }
+    : { visibility: "hidden" } as React.CSSProperties;
 
   return (
     <WindowContext.Provider value={{ slug, pos }}>
