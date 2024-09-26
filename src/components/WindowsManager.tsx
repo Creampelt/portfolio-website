@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
 import { WindowsManagerContext } from "../constants/contexts";
-import { getPages, getPagesByType, isMobile } from "../constants/helpers";
+import { getPages, getPagesByType, useIsMobile } from "../constants/helpers";
 import { WINDOW_OFFSET } from "../constants/staticConstants";
 import "../stylesheets/window.scss";
 import PageManager from "../templates/PageTemplate";
@@ -49,6 +49,7 @@ const WindowsManager: React.FC<React.PropsWithChildren> = ({ children }) => {
   const pages = React.useMemo(() => getPages(query), [query]);
   const pagesByType = React.useMemo(() => getPagesByType(Object.values(pages)), [pages]);
   const [windows, setWindows] = React.useState<WindowSpawnInfo[]>([]);
+  const isMobile = useIsMobile();
 
   const filterSlug = (slug: string) => windows.filter((winSlug) => winSlug.slug !== slug);
 
@@ -98,7 +99,7 @@ const WindowsManager: React.FC<React.PropsWithChildren> = ({ children }) => {
     window.history.replaceState(null, "", `/${windows.length ? windows[windows.length - 1].slug : ""}`);
   }, [windows]);
 
-  const windowsToDisplay = isMobile()
+  const windowsToDisplay = isMobile
     ? windows.slice(-2)
     : windows;
 

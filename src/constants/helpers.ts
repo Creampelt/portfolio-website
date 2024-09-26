@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { MainPageInfo, PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
 import { PageType } from "../types";
 import { MOBILE_WIDTH, STATIC_PAGES } from "./staticConstants";
@@ -46,6 +47,34 @@ export function getReportUrl(query: Queries.DownloadLinksQuery, report?: string)
   return allUrlNodes.length > 0 ? allUrlNodes[0].node.publicURL : null;
 }
 
-export function isMobile(): boolean {
-  return window.innerWidth <= MOBILE_WIDTH;
+function useOnlineStatus() {
+  const [isOnline, setIsOnline] = useState(true);
+  useEffect(() => {
+    function handleOnline() {
+      setIsOnline(true);
+    }
+
+    function handleOffline() {
+      setIsOnline(false);
+    }
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+  return isOnline;
+}
+
+export function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleIsMobile = () => setIsMobile(window.innerWidth <= MOBILE_WIDTH);
+    handleIsMobile();
+    window.addEventListener("resize", handleIsMobile);
+    return () => window.removeEventListener("resize", handleIsMobile);
+  }, []);
+  return isMobile;
 }

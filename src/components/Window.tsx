@@ -1,6 +1,6 @@
 import * as React from "react";
 import { WindowContext, WindowsManagerContext } from "../constants/contexts";
-import { clamp, isMobile } from "../constants/helpers";
+import { clamp, useIsMobile } from "../constants/helpers";
 import { WINDOW_OFFSET } from "../constants/staticConstants";
 import type { Position } from "../types";
 
@@ -25,7 +25,7 @@ const Window: React.FC<WindowProps> = ({
   const { removeWindow } = React.useContext(WindowsManagerContext);
   const [dragging, setDragging] = React.useState<boolean>(false);
   const [posToMouse, setPosToMouse] = React.useState<Position | null>(null);
-  const [pos, _setPos] = React.useState<Position | null>(null);
+  const [pos, setPos] = React.useState<Position | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(true);
   const [minHeight, setMinHeight] = React.useState<number>(0);
 
@@ -33,13 +33,7 @@ const Window: React.FC<WindowProps> = ({
   const titleBarRef = React.useRef<HTMLDivElement>(null);
   const isDragging = React.useRef<boolean>(false);
 
-  const setPos = (pos: Position | null) => {
-    if (!isMobile() || pos === null) {
-      _setPos(pos);
-    } else {
-      _setPos({ x: 0, y: 0 });
-    }
-  };
+  const isMobile = useIsMobile();
 
   const onMouseDown: React.MouseEventHandler = (e) => {
     // only left mouse button
@@ -59,13 +53,6 @@ const Window: React.FC<WindowProps> = ({
     e.preventDefault();
   };
 
-  const onMouseUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setDragging(false);
-    setPosToMouse(null);
-    e.stopPropagation();
-    e.preventDefault();
-  };
-
   const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
     if (!isDragging.current || !posToMouse || !windowRef.current) {
       return;
@@ -81,8 +68,14 @@ const Window: React.FC<WindowProps> = ({
     e.preventDefault();
   };
 
-  const close = () => removeWindow(slug);
+  const onMouseUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    setDragging(false);
+    setPosToMouse(null);
+    e.stopPropagation();
+    e.preventDefault();
+  };
 
+  const close = () => removeWindow(slug);
   const minimize = () => setShowContent(!showContent);
 
   React.useEffect(() => {
@@ -127,6 +120,12 @@ const Window: React.FC<WindowProps> = ({
   }, [spawningPos, windowRef.current]);
 
   React.useEffect(() => {
+    const unsubscribe = () => {
+      // @ts-ignore 2769
+      window.removeEventListener("mousemove", onMouseMove);
+      // @ts-ignore 2769
+      window.removeEventListener("mouseup", onMouseUp);
+    };
     if (dragging && !isDragging.current) {
       isDragging.current = true;
       // @ts-ignore 2769
@@ -135,12 +134,12 @@ const Window: React.FC<WindowProps> = ({
       window.addEventListener("mouseup", onMouseUp);
     } else if (!dragging && isDragging.current) {
       isDragging.current = false;
-      // @ts-ignore 2769
-      window.removeEventListener("mousemove", onMouseMove);
-      // @ts-ignore 2769
-      window.removeEventListener("mouseup", onMouseUp);
+      unsubscribe();
     }
+    return unsubscribe();
   }, [dragging]);
+
+  const posStyle = pos ? { left: !isMobile ? pos.x : 0, top: !isMobile ? pos.y : 0 } : { visibility: "hidden" };
 
   return (
     <WindowContext.Provider value={{ slug, pos }}>
@@ -148,9 +147,7 @@ const Window: React.FC<WindowProps> = ({
         className={`window ${!showContent ? "minimized" : "expanded"}`}
         ref={windowRef}
         style={{
-          ...(
-            pos ? { left: pos.x, top: pos.y } : { visibility: "hidden" }
-          ), zIndex: index, ...(
+          ...posStyle, zIndex: index, ...(
             !showContent ? { height: minHeight } : {}
           ),
         }}
@@ -163,7 +160,7 @@ const Window: React.FC<WindowProps> = ({
         >
           <div className="buttons">
             <button className="quit" onClick={close}>x</button>
-            {!isMobile() && <button className="quit" onClick={minimize}>_</button>}
+            {!isMobile && <button className="quit" onClick={minimize}>_</button>}
           </div>
           <div className="bar-decoration">
             <span />
