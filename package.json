@@ -18,10 +18,10 @@
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
     "gatsby": "^5.13.5",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-copy-linked-files": "^6.13.1",
     "gatsby-remark-emoji": "^0.0.3",
     "gatsby-remark-gifs": "^1.2.0",

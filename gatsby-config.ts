@@ -9,6 +9,9 @@ const config: GatsbyConfig = {
   // IntelliSense. If you use VSCode you can also use the GraphQL plugin Learn more at:
   // https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
@@ -47,11 +50,13 @@ const config: GatsbyConfig = {
       __key: "pages",
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        google: {
-          families: ["M PLUS Code Latin", "Courier Prime"],
-        },
+        fonts: [
+          `M PLUS Code Latin`,
+          `Courier Prime`, // you can also specify font weights and styles
+        ],
+        display: "block",
       },
     },
     {
