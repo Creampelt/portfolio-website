@@ -1,6 +1,6 @@
 import type { MainPageInfo, PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
 import { PageType } from "../types";
-import { STATIC_PAGES } from "./staticConstants";
+import { MOBILE_WIDTH, STATIC_PAGES } from "./staticConstants";
 
 export function getPages(query: Queries.AllPagesQuery): { [slug: string]: PageInfo } {
   const pages: { [slug: string]: PageInfo } = {};
@@ -44,4 +44,8 @@ export function getReportUrl(query: Queries.DownloadLinksQuery, report?: string)
   }
   const allUrlNodes = query.allFile.edges.filter(({ node }) => node.relativePath.replace("downloads/", "") === report);
   return allUrlNodes.length > 0 ? allUrlNodes[0].node.publicURL : null;
+}
+
+export function isMobile(): boolean {
+  return window.innerWidth <= MOBILE_WIDTH;
 }

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { WindowContext, WindowsManagerContext } from "../constants/contexts";
+import { isMobile } from "../constants/helpers";
 
 type PageLinkProps = React.HTMLProps<HTMLAnchorElement> & {
   executeOnDoubleClick?: boolean;
@@ -11,7 +12,7 @@ const PageLink: React.FC<PageLinkProps> = ({ executeOnDoubleClick, href, ...prop
   const onClick = (e: React.MouseEvent, isDoubleClick: boolean) => {
     e.preventDefault();
     if ((
-      (
+      isMobile() || (
         isDoubleClick && executeOnDoubleClick
       ) || (
         !isDoubleClick && !executeOnDoubleClick

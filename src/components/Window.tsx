@@ -1,6 +1,6 @@
 import * as React from "react";
 import { WindowContext, WindowsManagerContext } from "../constants/contexts";
-import { clamp } from "../constants/helpers";
+import { clamp, isMobile } from "../constants/helpers";
 import { WINDOW_OFFSET } from "../constants/staticConstants";
 import type { Position } from "../types";
 
@@ -25,13 +25,21 @@ const Window: React.FC<WindowProps> = ({
   const { removeWindow } = React.useContext(WindowsManagerContext);
   const [dragging, setDragging] = React.useState<boolean>(false);
   const [posToMouse, setPosToMouse] = React.useState<Position | null>(null);
-  const [pos, setPos] = React.useState<Position | null>(null);
+  const [pos, _setPos] = React.useState<Position | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(true);
   const [minHeight, setMinHeight] = React.useState<number>(0);
 
   const windowRef = React.useRef<HTMLDivElement>(null);
   const titleBarRef = React.useRef<HTMLDivElement>(null);
   const isDragging = React.useRef<boolean>(false);
+
+  const setPos = (pos: Position | null) => {
+    if (!isMobile() || pos === null) {
+      _setPos(pos);
+    } else {
+      _setPos({ x: 0, y: 0 });
+    }
+  };
 
   const onMouseDown: React.MouseEventHandler = (e) => {
     // only left mouse button
@@ -155,7 +163,7 @@ const Window: React.FC<WindowProps> = ({
         >
           <div className="buttons">
             <button className="quit" onClick={close}>x</button>
-            <button className="quit" onClick={minimize}>_</button>
+            {!isMobile() && <button className="quit" onClick={minimize}>_</button>}
           </div>
           <div className="bar-decoration">
             <span />

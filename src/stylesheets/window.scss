@@ -120,3 +120,26 @@
     }
   }
 }
+
+@media only screen and (max-width: constants.$mobile-width) {
+  .window {
+    width: 100vw;
+    height: 100svh;
+    box-shadow: none;
+
+    &.expanded, &.minimized {
+      resize: none;
+    }
+
+    .title-bar {
+      .buttons {
+        //display: none;
+      }
+    }
+
+    & > .content {
+      //margin: 0;
+      //border: none;
+    }
+  }
+}

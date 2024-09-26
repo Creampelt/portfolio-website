@@ -36,3 +36,5 @@ export const INHERITANCE: InheritanceTree = {
     [PageType.DIRECTORY]: null,
   },
 };
+
+export const MOBILE_WIDTH = 600;

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { isMobile } from "../constants/helpers";
 
 type FolderButtonProps = {
   icon: string;
@@ -8,7 +9,11 @@ type FolderButtonProps = {
 };
 
 const FolderButton: React.FC<FolderButtonProps> = ({ icon, text, onClick, className = "" }) => (
-  <button className={`folder-button ${className}`} onDoubleClick={onClick}>
+  <button
+    className={`folder-button ${className}`}
+    onClick={isMobile() ? onClick : undefined}
+    onDoubleClick={!isMobile() ? onClick : undefined}
+  >
     <img src={icon} alt={text} />
     <div>
         <span>

@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
 import { WindowsManagerContext } from "../constants/contexts";
-import { getPages, getPagesByType } from "../constants/helpers";
+import { getPages, getPagesByType, isMobile } from "../constants/helpers";
 import { WINDOW_OFFSET } from "../constants/staticConstants";
-import "../stylesheets/windows.scss";
+import "../stylesheets/window.scss";
 import PageManager from "../templates/PageTemplate";
 import type { Position, WindowSpawnInfo } from "../types";
 import Window from "./Window";
@@ -98,6 +98,10 @@ const WindowsManager: React.FC<React.PropsWithChildren> = ({ children }) => {
     window.history.replaceState(null, "", `/${windows.length ? windows[windows.length - 1].slug : ""}`);
   }, [windows]);
 
+  const windowsToDisplay = isMobile()
+    ? windows.slice(-2)
+    : windows;
+
   return (
     <WindowsManagerContext.Provider value={{ windows, pageIndex: pagesByType, addWindow, removeWindow }}>
       <>
@@ -108,7 +112,7 @@ const WindowsManager: React.FC<React.PropsWithChildren> = ({ children }) => {
           Emily Sturman
         </title>
         {children}
-        {windows.map(({ slug, spawningPos, relativeToCenter }, i) => (
+        {windowsToDisplay.map(({ slug, spawningPos, relativeToCenter }, i) => (
           !pages[slug] ? null : (
             <Window
               key={slug}

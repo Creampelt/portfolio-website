@@ -82,6 +82,13 @@ html, body {
     color: constants.$background-color;
   }
 
+  @media only screen and (max-width: constants.$mobile-width) {
+    &:hover span {
+      background-color: constants.$highlight-color;
+      color: constants.$background-color;
+    }
+  }
+
   &:hover {
     background-color: transparent;
   }

@@ -57,18 +57,20 @@ const Projects: React.FC = () => {
 
   return (
     <div className="projects">
-      <div className="content">
-        {projects
-          .filter(({ types }) => !projectFilter || types.includes(projectFilter))
-          .map(({ slug, title }) => (
-            <FolderButton
-              key={slug}
-              icon={hardDisk}
-              text={title}
-              onClick={() => addWindow(slug, pos)}
-              className="project-link"
-            />
-          ))}
+      <div className="content-wrapper">
+        <div className="content">
+          {projects
+            .filter(({ types }) => !projectFilter || types.includes(projectFilter))
+            .map(({ slug, title }) => (
+              <FolderButton
+                key={slug}
+                icon={hardDisk}
+                text={title}
+                onClick={() => addWindow(slug, pos)}
+                className="project-link"
+              />
+            ))}
+        </div>
       </div>
       <Navbar keepActive initialActive={ProjectType.FAVORITE} links={NAV_LINKS} onNavigate={setFilter} />
     </div>

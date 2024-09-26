@@ -6,12 +6,16 @@
   flex-direction: row-reverse;
   overflow: hidden;
 
-  .content {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+  .content-wrapper {
     overflow: scroll;
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      height: fit-content;
+    }
   }
 
   .navbar {
