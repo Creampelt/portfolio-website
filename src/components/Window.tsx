@@ -136,7 +136,7 @@ const Window: React.FC<WindowProps> = ({
       isDragging.current = false;
       unsubscribe();
     }
-    return unsubscribe();
+    return unsubscribe;
   }, [dragging]);
 
   const posStyle = pos
