@@ -1,4 +1,19 @@
+.main {
+  background-repeat: no-repeat;
+  width: 100%;
+
+}
+
+.about {
+  background-image: url("../assets/images/vaporwave/anything-can-happen.gif");
+  background-position: center;
+}
+
 .playlists {
+  background-image: url("../assets/images/vaporwave/skeleton-cds.gif");
+  background-position: top right;
+  background-size: 55%;
+
   ul {
     padding: 0 0 0 20px !important;
 
@@ -10,4 +25,11 @@
       }
     }
   }
+}
+
+.directory .tree {
+  background-image: url("../assets/images/vaporwave/bust-astronaut.gif");
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: top right;
 }

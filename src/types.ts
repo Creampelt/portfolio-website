@@ -82,3 +82,9 @@ export type WindowsManagerContextType = {
   addWindow: (slug: string, pos: Position | null) => void;
   removeWindow: (slug: string) => void;
 };
+
+export type AudioTrack = {
+  track: string;
+  title: string;
+  artist: string;
+};

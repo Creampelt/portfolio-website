@@ -19,8 +19,9 @@ I like...
     - current favs: Paramore/Hayley Williams, Charli XCX, Chappell Roan
 - video games
     - favs: the Witcher 3, Red Dead Redemption 2, Baldurs Gate 3, The Last of Us
+    - currently playing: Valheim, Kingdom Come Deliverance, Marvel Rivals
 - geometry (sometimes)
-- existing in the context of all in which we live and what came before us
+- home projects & building things
 
 I dislike...
 

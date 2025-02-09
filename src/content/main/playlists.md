@@ -12,7 +12,7 @@ title: "Playlists"
 - :cupid: Heartaches By The Number - Guy Mitchell
 - ❤️‍🔥 I Don't Want To Set The World On Fire - The Ink Spots
 - 🖼️ Then You Can Tell Me Goodbye - The Casinos
-- 🖤 Anyone Who Knows What Love Is - Irma
+- 🖤 Anyone Who Knows What Love Is - Irma Thomas
 - 🧠 Crazy - Patsy Cline
 - 🔤 L-O-V-E - Nat King Cole
 - ️⚓️ Beyond the Sea - Bobby Darin

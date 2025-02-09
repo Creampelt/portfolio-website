@@ -5,7 +5,13 @@
   font-family: constants.$body-font;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-family: constants.$body-font;
   margin: 0;
 }
@@ -21,7 +27,8 @@ button {
   }
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -91,5 +98,40 @@ html, body {
 
   &:hover {
     background-color: transparent;
+  }
+}
+
+.marquee-container {
+  .marquee {
+    overflow: hidden;
+    position: absolute;
+    transform: translateX(0%);
+    white-space: nowrap;
+
+    span {
+      display: inline-block;
+      animation: scroll-left 10s linear infinite;
+      animation-delay: -5s;
+      padding-left: 100%;
+      padding-right: 30px;
+    }
+  }
+
+  .marquee2 span {
+    animation-delay: 0s;
+  }
+
+  &.paused .marquee span {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
   }
 }

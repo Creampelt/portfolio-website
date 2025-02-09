@@ -4,6 +4,7 @@ import { WindowsManagerContext } from "../constants/contexts";
 import { STATIC_PAGES } from "../constants/staticConstants";
 import FolderButton from "./FolderButton";
 import Footer from "./Footer";
+import AudioControls from "./AudioControls";
 import "../stylesheets/desktop.scss";
 
 const Desktop: React.FC = () => {
@@ -11,6 +12,7 @@ const Desktop: React.FC = () => {
   const openHome = () => addWindow(STATIC_PAGES.home.slug, null);
   return (
     <div className="desktop">
+      <AudioControls />
       <FolderButton className="main-folder" icon={folder} text="Open me" onClick={openHome} />
       <Footer />
     </div>

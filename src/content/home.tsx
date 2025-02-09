@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import { WindowContext, WindowsManagerContext } from "../constants/contexts";
 import "../stylesheets/home.scss";
 import type { NavLink } from "../types";
+import statue from "../assets/images/vaporwave/vapor_bust_spin.gif";
+import headed from "../assets/images/vaporwave/headed.gif";
 
 const NAV_LINKS: NavLink[] = [
   { title: "Projects", slug: "projects", icon: rainbowDs },
@@ -21,12 +23,16 @@ const Home = () => {
   return (
     <div className="home">
       <div className="content">
-        <p>
-          Hello! Welcome to my portfolio website :)
-        </p>
-        <p>
-          Feel free to take a look around.
-        </p>
+        <div className="text">
+          <p>
+            Hello! Welcome to my portfolio website :)
+          </p>
+          <p>
+            Feel free to take a look around.
+          </p>
+        </div>
+        <img className="statue" src={statue} alt="vaporwave spinning bust" />
+        <img className="headed" src={headed} alt="headed" />
       </div>
       <Navbar links={NAV_LINKS} onNavigate={(slug: string) => addWindow(slug, pos)} />
     </div>

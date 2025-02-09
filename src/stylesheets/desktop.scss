@@ -4,27 +4,88 @@
 .desktop {
   width: 100vw;
   height: 100dvh;
-  background-color: constants.$desktop-color;
+  background-image: url("../assets/images/vaporwave/vaporwave.gif");
+  background-size: contain;
+  background-position: center;
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
+  padding-top: 26vh;
   overflow: hidden;
-
-  &:before {
-    content: "emily sturman emily sturman emily sturman emily sturman emily sturman emily sturman emily sturman emily sturman";
-    position: absolute;
-    font-family: constants.$title-font;
-    text-align: left;
-    font-size: constants.$desktop-font-size;
-    color: constants.$desktop-text-color;
-    font-weight: 1000;
-    line-height: 0.7em;
-    top: 0.1em;
-  }
 
   .main-folder {
     position: relative;
+    color: constants.$background-color;
+    text-transform: lowercase;
+    font-weight: bold;
+  }
+
+  .audio-controls-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: constants.$background-color;
+    border: constants.$border;
+
+    .audio-controls {
+      display: flex;
+      padding: 1px;
+
+      .show-credits-btn {
+        border: 3px solid constants.$background-color;
+        padding-top: 4px;
+
+        &:active {
+          border: 3px inset constants.$emph-button-color;
+        }
+      }
+
+      .track-info {
+        margin: 0 5px 0 10px;
+        position: relative;
+        width: 150px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      .audio-buttons {
+        display: flex;
+        border: constants.$border;
+        padding: 5px;
+        margin: 3px 3px 3px 0;
+
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          margin: 0 5px;
+
+          img {
+            width: 15px;
+            height: 15px;
+          }
+
+          &:hover {
+            background-color: transparent;
+
+            img {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+
+    .credits {
+      padding: 5px 10px 10px;
+
+      &.hidden {
+        display: none;
+      }
+    }
   }
 
   .important-links {

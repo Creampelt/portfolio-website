@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import type { MainPageInfo, PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
+import { useEffect, useState, useRef } from "react";
+import type { AudioTrack, MainPageInfo, PageByTypeIndex, PageInfo, ProjectPageInfo } from "../types";
 import { PageType } from "../types";
 import { MOBILE_WIDTH, STATIC_PAGES } from "./staticConstants";
 
@@ -77,4 +77,59 @@ export function useIsMobile(): boolean {
     return () => window.removeEventListener("resize", handleIsMobile);
   }, []);
   return isMobile;
+}
+
+export function shuffleTracks(playlist: AudioTrack[]): AudioTrack[] {
+  let cur = playlist.length;
+  while (cur != 0) {
+    let rand = Math.floor(Math.random() * cur);
+    cur--;
+    [playlist[cur], playlist[rand]] = [playlist[rand], playlist[cur]];
+  }
+  return playlist;
+}
+
+export function useAudio(track: string): [boolean, boolean, (playing: boolean) => void] {
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState<boolean>(false);
+  const [ended, setEnded] = useState<boolean>(false);
+  const prevTrack = useRef<string | null>(null);
+
+  // Ignore useAudio during SSR
+  useEffect(() => {
+    if (typeof window !== "undefined" && !audio) {
+      setAudio(new Audio(track));
+      prevTrack.current = track;
+    }
+  }, []);
+  // Play audio according to playing & ended states
+  useEffect(() => {
+    if (audio) {
+      if (playing && !ended) audio.play();
+      else audio.pause();
+    }
+  }, [audio, playing]);
+  // Listen for track end
+  useEffect(() => {
+    if (!audio) return;
+    audio.addEventListener("ended", () => setEnded(true));
+    return () => audio.removeEventListener("ended", () => setEnded(true));
+  }, [audio]);
+  // Load new track
+  useEffect(() => {
+    if (!audio || prevTrack.current === track) return;
+    audio.pause();
+    audio.src = track;
+    audio.load();
+    audio.play();
+    setPlaying(true);
+    setEnded(false);
+    prevTrack.current = track;
+  }, [track]);
+
+  return [playing, ended, setPlaying];
+}
+
+export function strictMod(n: number, m: number) {
+  return ((n % m) + m) % m;
 }
