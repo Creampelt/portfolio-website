@@ -1,6 +1,6 @@
 import { graphql, HeadFC, PageProps } from "gatsby";
 import * as React from "react";
-import favicon from "../assets/images/favicon.png";
+import favicon from "../assets/images/favicon.gif";
 import thumbnail from "../assets/images/thumbnail.png";
 import Desktop from "../components/Desktop";
 import "../stylesheets/index.scss";
