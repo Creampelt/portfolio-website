@@ -16,5 +16,21 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = ({ setHeadComponents }) =
             crossOrigin="anonymous"
             key="outrunnerFont"
         />,
+        <link
+            rel="preload"
+            href="/fonts/IBMPlexSerif-ExtraLight.ttf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+            key="plexExtraLightFont"
+        />,
+        <link
+            rel="preload"
+            href="/fonts/IBMPlexSerif-Medium.ttf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+            key="plexMediumFont"
+        />,
     ])
 }
