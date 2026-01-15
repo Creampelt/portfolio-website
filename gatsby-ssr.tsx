@@ -1,0 +1,20 @@
+import React from "react";
+import type { GatsbySSR } from "gatsby";
+import Layout from "./src/components/Layout";
+
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element }) => (
+    <Layout>{element}</Layout>
+)
+
+export const onRenderBody: GatsbySSR["onRenderBody"] = ({ setHeadComponents }) => {
+    setHeadComponents([
+        <link
+            rel="preload"
+            href="/fonts/AXROutrunner.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
+            key="outrunnerFont"
+        />,
+    ])
+}
